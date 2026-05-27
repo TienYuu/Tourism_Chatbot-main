@@ -1,0 +1,1172 @@
+[
+  {
+    "entity_id": "Q2234243",
+    "property": "P625",
+    "target": {
+      "latitude": 16.466666666666665,
+      "longitude": 107.58333333333333
+    }
+  },
+  {
+    "entity_id": "Q2234243",
+    "property": "P31",
+    "target": {
+      "id": "Q15661340",
+      "label": "thành phố cổ"
+    }
+  },
+  {
+    "entity_id": "Q2234243",
+    "property": "P31",
+    "target": {
+      "id": "Q515",
+      "label": "thành phố"
+    }
+  },
+  {
+    "entity_id": "Q2234243",
+    "property": "P31",
+    "target": {
+      "id": "Q57821",
+      "label": "công sự"
+    }
+  },
+  {
+    "entity_id": "Q2234243",
+    "property": "P31",
+    "target": {
+      "id": "Q210272",
+      "label": "di sản văn hóa"
+    }
+  },
+  {
+    "entity_id": "Q2234243",
+    "property": "P17",
+    "target": {
+      "id": "Q6500483",
+      "label": "nhà Nguyễn"
+    }
+  },
+  {
+    "entity_id": "Q2234243",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q36167",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q36167",
+    "property": "P17",
+    "target": {
+      "id": "Q185682",
+      "label": "Liên bang Đông Dương"
+    }
+  },
+  {
+    "entity_id": "Q36167",
+    "property": "P17",
+    "target": {
+      "id": "Q701337",
+      "label": "Đế quốc Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q36167",
+    "property": "P17",
+    "target": {
+      "id": "Q6500483",
+      "label": "nhà Nguyễn"
+    }
+  },
+  {
+    "entity_id": "Q36167",
+    "property": "P625",
+    "target": {
+      "latitude": 16.456111111111,
+      "longitude": 107.57638888889
+    }
+  },
+  {
+    "entity_id": "Q36167",
+    "property": "P31",
+    "target": {
+      "id": "Q3249005",
+      "label": "thành phố thuộc tỉnh của Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q36167",
+    "property": "P31",
+    "target": {
+      "id": "Q27554677",
+      "label": "cố đô"
+    }
+  },
+  {
+    "entity_id": "Q36399",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q36399",
+    "property": "P625",
+    "target": {
+      "latitude": 16.46388888888889,
+      "longitude": 107.58666666666667
+    }
+  },
+  {
+    "entity_id": "Q36399",
+    "property": "P31",
+    "target": {
+      "id": "Q1381899",
+      "label": "thành phố trực thuộc trung ương của Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q36399",
+    "property": "P31",
+    "target": {
+      "id": "Q515",
+      "label": "thành phố"
+    }
+  },
+  {
+    "entity_id": "Q36399",
+    "property": "P31",
+    "target": {
+      "id": "Q27554677",
+      "label": "cố đô"
+    }
+  },
+  {
+    "entity_id": "Q881",
+    "property": "P571",
+    "target": "+1976-07-02T00:00:00Z"
+  },
+  {
+    "entity_id": "Q881",
+    "property": "P571",
+    "target": "+1945-09-02T00:00:00Z"
+  },
+  {
+    "entity_id": "Q881",
+    "property": "P571",
+    "target": "+1804-00-00T00:00:00Z"
+  },
+  {
+    "entity_id": "Q881",
+    "property": "P31",
+    "target": {
+      "id": "Q3624078",
+      "label": "quốc gia có chủ quyền"
+    }
+  },
+  {
+    "entity_id": "Q881",
+    "property": "P31",
+    "target": {
+      "id": "Q849866",
+      "label": "quốc gia cộng sản"
+    }
+  },
+  {
+    "entity_id": "Q881",
+    "property": "P31",
+    "target": {
+      "id": "Q6256",
+      "label": "quốc gia"
+    }
+  },
+  {
+    "entity_id": "Q881",
+    "property": "P625",
+    "target": {
+      "latitude": 16,
+      "longitude": 108
+    }
+  },
+  {
+    "entity_id": "Q881",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q185682",
+    "property": "P571",
+    "target": "+1887-01-01T00:00:00Z"
+  },
+  {
+    "entity_id": "Q185682",
+    "property": "P625",
+    "target": {
+      "latitude": 21.033333333333,
+      "longitude": 105.85
+    }
+  },
+  {
+    "entity_id": "Q185682",
+    "property": "P31",
+    "target": {
+      "id": "Q43702",
+      "label": "liên bang"
+    }
+  },
+  {
+    "entity_id": "Q185682",
+    "property": "P31",
+    "target": {
+      "id": "Q3024240",
+      "label": "cựu quốc gia"
+    }
+  },
+  {
+    "entity_id": "Q185682",
+    "property": "P31",
+    "target": {
+      "id": "Q133156",
+      "label": "thuộc địa"
+    }
+  },
+  {
+    "entity_id": "Q185682",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q185682",
+    "property": "P17",
+    "target": {
+      "id": "Q819",
+      "label": "Lào"
+    }
+  },
+  {
+    "entity_id": "Q185682",
+    "property": "P17",
+    "target": {
+      "id": "Q424",
+      "label": "Campuchia"
+    }
+  },
+  {
+    "entity_id": "Q185682",
+    "property": "P17",
+    "target": {
+      "id": "Q148",
+      "label": "Trung Quốc"
+    }
+  },
+  {
+    "entity_id": "Q43467",
+    "property": "P31",
+    "target": {
+      "id": "Q34763",
+      "label": "bán đảo"
+    }
+  },
+  {
+    "entity_id": "Q43467",
+    "property": "P31",
+    "target": {
+      "id": "Q82794",
+      "label": "vùng"
+    }
+  },
+  {
+    "entity_id": "Q43467",
+    "property": "P625",
+    "target": {
+      "latitude": 16,
+      "longitude": 102
+    }
+  },
+  {
+    "entity_id": "Q43467",
+    "property": "P17",
+    "target": {
+      "id": "Q836",
+      "label": "Myanma"
+    }
+  },
+  {
+    "entity_id": "Q43467",
+    "property": "P17",
+    "target": {
+      "id": "Q424",
+      "label": "Campuchia"
+    }
+  },
+  {
+    "entity_id": "Q43467",
+    "property": "P17",
+    "target": {
+      "id": "Q819",
+      "label": "Lào"
+    }
+  },
+  {
+    "entity_id": "Q43467",
+    "property": "P17",
+    "target": {
+      "id": "Q833",
+      "label": "Malaysia"
+    }
+  },
+  {
+    "entity_id": "Q43467",
+    "property": "P17",
+    "target": {
+      "id": "Q869",
+      "label": "Thái Lan"
+    }
+  },
+  {
+    "entity_id": "Q43467",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q43467",
+    "property": "P17",
+    "target": {
+      "id": "Q334",
+      "label": "Singapore"
+    }
+  },
+  {
+    "entity_id": "Q179023",
+    "property": "P571",
+    "target": "+1534-01-01T00:00:00Z"
+  },
+  {
+    "entity_id": "Q179023",
+    "property": "P17",
+    "target": {
+      "id": "Q142",
+      "label": "Pháp"
+    }
+  },
+  {
+    "entity_id": "Q179023",
+    "property": "P31",
+    "target": {
+      "id": "Q1790360",
+      "label": "đế quốc thuộc địa"
+    }
+  },
+  {
+    "entity_id": "Q179023",
+    "property": "P31",
+    "target": {
+      "id": "Q3024240",
+      "label": "cựu quốc gia"
+    }
+  },
+  {
+    "entity_id": "Q179023",
+    "property": "P625",
+    "target": {
+      "latitude": 48.85,
+      "longitude": -2.35
+    }
+  },
+  {
+    "entity_id": "Q933384",
+    "property": "P625",
+    "target": {
+      "latitude": 10.77705,
+      "longitude": 106.69537
+    }
+  },
+  {
+    "entity_id": "Q933384",
+    "property": "P31",
+    "target": {
+      "id": "Q2114972",
+      "label": "dinh tổng thống"
+    }
+  },
+  {
+    "entity_id": "Q933384",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q933384",
+    "property": "P571",
+    "target": "+1955-00-00T00:00:00Z"
+  },
+  {
+    "entity_id": "Q933384",
+    "property": "P6375",
+    "target": "135 Nam Kỳ Khởi Nghĩa, Phường Bến Thành, Quận 1, Hồ Chí Minh 700000"
+  },
+  {
+    "entity_id": "Q3339372",
+    "property": "P31",
+    "target": {
+      "id": "Q5",
+      "label": "người"
+    }
+  },
+  {
+    "entity_id": "Q1854",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q1854",
+    "property": "P17",
+    "target": {
+      "id": "Q180573",
+      "label": "Việt Nam Cộng hòa"
+    }
+  },
+  {
+    "entity_id": "Q1854",
+    "property": "P31",
+    "target": {
+      "id": "Q1381899",
+      "label": "thành phố trực thuộc trung ương của Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q1854",
+    "property": "P31",
+    "target": {
+      "id": "Q515",
+      "label": "thành phố"
+    }
+  },
+  {
+    "entity_id": "Q1854",
+    "property": "P31",
+    "target": {
+      "id": "Q1549591",
+      "label": "thành phố lớn"
+    }
+  },
+  {
+    "entity_id": "Q1854",
+    "property": "P31",
+    "target": {
+      "id": "Q174844",
+      "label": "siêu đô thị"
+    }
+  },
+  {
+    "entity_id": "Q1854",
+    "property": "P31",
+    "target": {
+      "id": "Q51929311",
+      "label": "thành phố lớn nhất"
+    }
+  },
+  {
+    "entity_id": "Q1854",
+    "property": "P31",
+    "target": {
+      "id": "Q1074523",
+      "label": "planned community"
+    }
+  },
+  {
+    "entity_id": "Q1854",
+    "property": "P625",
+    "target": {
+      "latitude": 10.775555555555556,
+      "longitude": 106.70194444444445
+    }
+  },
+  {
+    "entity_id": "Q1854",
+    "property": "P571",
+    "target": "+1976-00-00T00:00:00Z"
+  },
+  {
+    "entity_id": "Q2289221",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q2289221",
+    "property": "P31",
+    "target": {
+      "id": "Q10794275",
+      "label": "miền Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q2289221",
+    "property": "P625",
+    "target": {
+      "latitude": 10.876,
+      "longitude": 106.743
+    }
+  },
+  {
+    "entity_id": "Q5965459",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q5965459",
+    "property": "P31",
+    "target": {
+      "id": "Q676050",
+      "label": "phố cổ"
+    }
+  },
+  {
+    "entity_id": "Q5965459",
+    "property": "P625",
+    "target": {
+      "latitude": 15.877135,
+      "longitude": 108.328631
+    }
+  },
+  {
+    "entity_id": "Q5965459",
+    "property": "P1435",
+    "target": {
+      "id": "Q9259",
+      "label": "di sản thế giới"
+    }
+  },
+  {
+    "entity_id": "Q36160",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q36160",
+    "property": "P625",
+    "target": {
+      "latitude": 15.877669444444445,
+      "longitude": 108.33265
+    }
+  },
+  {
+    "entity_id": "Q36160",
+    "property": "P31",
+    "target": {
+      "id": "Q3249005",
+      "label": "thành phố thuộc tỉnh của Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q36160",
+    "property": "P31",
+    "target": {
+      "id": "Q1549591",
+      "label": "thành phố lớn"
+    }
+  },
+  {
+    "entity_id": "Q36160",
+    "property": "P31",
+    "target": {
+      "id": "Q2264924",
+      "label": "thành phố cảng"
+    }
+  },
+  {
+    "entity_id": "Q36160",
+    "property": "P1435",
+    "target": {
+      "id": "Q9259",
+      "label": "di sản thế giới"
+    }
+  },
+  {
+    "entity_id": "Q33356",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q33356",
+    "property": "P625",
+    "target": {
+      "latitude": 15.55,
+      "longitude": 108.05
+    }
+  },
+  {
+    "entity_id": "Q33356",
+    "property": "P31",
+    "target": {
+      "id": "Q137325529",
+      "label": "tỉnh cũ của Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q206219",
+    "property": "P625",
+    "target": {
+      "latitude": 21.0325,
+      "longitude": 105.83972
+    }
+  },
+  {
+    "entity_id": "Q206219",
+    "property": "P31",
+    "target": {
+      "id": "Q88291",
+      "label": "citadel"
+    }
+  },
+  {
+    "entity_id": "Q206219",
+    "property": "P31",
+    "target": {
+      "id": "Q618123",
+      "label": "địa điểm"
+    }
+  },
+  {
+    "entity_id": "Q206219",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q206219",
+    "property": "P1435",
+    "target": {
+      "id": "Q9259",
+      "label": "di sản thế giới"
+    }
+  },
+  {
+    "entity_id": "Q1858",
+    "property": "P31",
+    "target": {
+      "id": "Q1381899",
+      "label": "thành phố trực thuộc trung ương của Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q1858",
+    "property": "P31",
+    "target": {
+      "id": "Q1549591",
+      "label": "thành phố lớn"
+    }
+  },
+  {
+    "entity_id": "Q1858",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q1858",
+    "property": "P625",
+    "target": {
+      "latitude": 21.0245,
+      "longitude": 105.84117
+    }
+  },
+  {
+    "entity_id": "Q1858",
+    "property": "P571",
+    "target": "+1010-00-00T00:00:00Z"
+  },
+  {
+    "entity_id": "Q2428694",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q2428694",
+    "property": "P31",
+    "target": {
+      "id": "Q10794275",
+      "label": "miền Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q2428694",
+    "property": "P625",
+    "target": {
+      "latitude": 21.58,
+      "longitude": 105.22
+    }
+  },
+  {
+    "entity_id": "Q391406",
+    "property": "P625",
+    "target": {
+      "latitude": 15.76324,
+      "longitude": 108.124446
+    }
+  },
+  {
+    "entity_id": "Q391406",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q391406",
+    "property": "P1435",
+    "target": {
+      "id": "Q9259",
+      "label": "di sản thế giới"
+    }
+  },
+  {
+    "entity_id": "Q391406",
+    "property": "P31",
+    "target": {
+      "id": "Q842402",
+      "label": "đền Hindu"
+    }
+  },
+  {
+    "entity_id": "Q391406",
+    "property": "P31",
+    "target": {
+      "id": "Q839954",
+      "label": "di chỉ"
+    }
+  },
+  {
+    "entity_id": "Q25282",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q25282",
+    "property": "P625",
+    "target": {
+      "latitude": 16.069444444444443,
+      "longitude": 108.20972222222223
+    }
+  },
+  {
+    "entity_id": "Q25282",
+    "property": "P31",
+    "target": {
+      "id": "Q1381899",
+      "label": "thành phố trực thuộc trung ương của Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q25282",
+    "property": "P31",
+    "target": {
+      "id": "Q515",
+      "label": "thành phố"
+    }
+  },
+  {
+    "entity_id": "Q25282",
+    "property": "P31",
+    "target": {
+      "id": "Q1549591",
+      "label": "thành phố lớn"
+    }
+  },
+  {
+    "entity_id": "Q14316796",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q14316796",
+    "property": "P625",
+    "target": {
+      "latitude": 16.49,
+      "longitude": 107.36
+    }
+  },
+  {
+    "entity_id": "Q14316796",
+    "property": "P31",
+    "target": {
+      "id": "Q183366",
+      "label": "lãnh thổ"
+    }
+  },
+  {
+    "entity_id": "Q7263979",
+    "property": "P625",
+    "target": {
+      "latitude": 22.978,
+      "longitude": 106.054
+    }
+  },
+  {
+    "entity_id": "Q7263979",
+    "property": "P31",
+    "target": {
+      "id": "Q486972",
+      "label": "khu định cư"
+    }
+  },
+  {
+    "entity_id": "Q7263979",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q23513",
+    "property": "P625",
+    "target": {
+      "latitude": 17.533333333333,
+      "longitude": 106.15
+    }
+  },
+  {
+    "entity_id": "Q23513",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q23513",
+    "property": "P31",
+    "target": {
+      "id": "Q122395435",
+      "label": "vườn quốc gia tại Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q23513",
+    "property": "P1435",
+    "target": {
+      "id": "Q9259",
+      "label": "di sản thế giới"
+    }
+  },
+  {
+    "entity_id": "Q23513",
+    "property": "P571",
+    "target": "+2001-00-00T00:00:00Z"
+  },
+  {
+    "entity_id": "Q590734",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q590734",
+    "property": "P625",
+    "target": {
+      "latitude": 17.587497,
+      "longitude": 106.533592
+    }
+  },
+  {
+    "entity_id": "Q590734",
+    "property": "P31",
+    "target": {
+      "id": "Q2582669",
+      "label": "huyện của Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q2673199",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q2673199",
+    "property": "P625",
+    "target": {
+      "latitude": 17.75,
+      "longitude": 105.917
+    }
+  },
+  {
+    "entity_id": "Q2673199",
+    "property": "P31",
+    "target": {
+      "id": "Q2582669",
+      "label": "huyện của Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q23533",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q23533",
+    "property": "P625",
+    "target": {
+      "latitude": 17.5,
+      "longitude": 106.33333333333
+    }
+  },
+  {
+    "entity_id": "Q23533",
+    "property": "P31",
+    "target": {
+      "id": "Q137325529",
+      "label": "tỉnh cũ của Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q5964889",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q5964889",
+    "property": "P31",
+    "target": {
+      "id": "Q4989906",
+      "label": "tượng đài"
+    }
+  },
+  {
+    "entity_id": "Q5964889",
+    "property": "P31",
+    "target": {
+      "id": "Q44539",
+      "label": "đền"
+    }
+  },
+  {
+    "entity_id": "Q5964889",
+    "property": "P625",
+    "target": {
+      "latitude": 21.365533,
+      "longitude": 105.324627
+    }
+  },
+  {
+    "entity_id": "Q190060",
+    "property": "P625",
+    "target": {
+      "latitude": 20.078055555556,
+      "longitude": 105.60472222222
+    }
+  },
+  {
+    "entity_id": "Q190060",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q190060",
+    "property": "P1435",
+    "target": {
+      "id": "Q9259",
+      "label": "di sản thế giới"
+    }
+  },
+  {
+    "entity_id": "Q190060",
+    "property": "P31",
+    "target": {
+      "id": "Q473972",
+      "label": "khu vực được bảo vệ"
+    }
+  },
+  {
+    "entity_id": "Q190060",
+    "property": "P31",
+    "target": {
+      "id": "Q88291",
+      "label": "citadel"
+    }
+  },
+  {
+    "entity_id": "Q190128",
+    "property": "P31",
+    "target": {
+      "id": "Q39594",
+      "label": "vịnh"
+    }
+  },
+  {
+    "entity_id": "Q190128",
+    "property": "P31",
+    "target": {
+      "id": "Q570116",
+      "label": "điểm tham quan"
+    }
+  },
+  {
+    "entity_id": "Q190128",
+    "property": "P625",
+    "target": {
+      "latitude": 20.9,
+      "longitude": 107.2
+    }
+  },
+  {
+    "entity_id": "Q190128",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q190128",
+    "property": "P1435",
+    "target": {
+      "id": "Q9259",
+      "label": "di sản thế giới"
+    }
+  },
+  {
+    "entity_id": "Q10841674",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q10841674",
+    "property": "P625",
+    "target": {
+      "latitude": 21.027,
+      "longitude": 107.37
+    }
+  },
+  {
+    "entity_id": "Q10841674",
+    "property": "P31",
+    "target": {
+      "id": "Q44539",
+      "label": "đền"
+    }
+  },
+  {
+    "entity_id": "Q1031051",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q1031051",
+    "property": "P625",
+    "target": {
+      "latitude": 21.006545,
+      "longitude": 107.272585
+    }
+  },
+  {
+    "entity_id": "Q1031051",
+    "property": "P31",
+    "target": {
+      "id": "Q3249005",
+      "label": "thành phố thuộc tỉnh của Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q1031051",
+    "property": "P31",
+    "target": {
+      "id": "Q1549591",
+      "label": "thành phố lớn"
+    }
+  },
+  {
+    "entity_id": "Q33396",
+    "property": "P17",
+    "target": {
+      "id": "Q881",
+      "label": "Việt Nam"
+    }
+  },
+  {
+    "entity_id": "Q33396",
+    "property": "P625",
+    "target": {
+      "latitude": 21.25,
+      "longitude": 107.33333333333
+    }
+  },
+  {
+    "entity_id": "Q33396",
+    "property": "P31",
+    "target": {
+      "id": "Q2824648",
+      "label": "tỉnh của Việt Nam"
+    }
+  }
+]

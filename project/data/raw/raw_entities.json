@@ -1,0 +1,299 @@
+[
+  {
+    "id": "Q2234243",
+    "label": "Cố đô Huế",
+    "description": "Thành phố cổ, kinh đô của Việt Nam thời chúa Nguyễn, Tây Sơn và nhà Nguyễn",
+    "aliases": []
+  },
+  {
+    "id": "Q36167",
+    "label": "Huế",
+    "description": "thành phố tỉnh lỵ của tỉnh Thừa Thiên Huế",
+    "aliases": [
+      "thành phố Huế"
+    ]
+  },
+  {
+    "id": "Q36399",
+    "label": "Huế",
+    "description": "thành phố trực thuộc trung ương của Việt Nam",
+    "aliases": [
+      "Thừa Thiên",
+      "Tỉnh Thừa Thiên-Huế",
+      "Thừa Thiên–Huế",
+      "Thừa Thiên – Huế",
+      "Thừa Thiên-Huế",
+      "Thừa Thiên - Huế"
+    ]
+  },
+  {
+    "id": "Q881",
+    "label": "Việt Nam",
+    "description": "quốc gia ở Đông Nam Á",
+    "aliases": [
+      "Cộng hòa Xã hội chủ nghĩa Việt Nam",
+      "CHXHCNVN",
+      "CHXHCN Việt Nam",
+      "VN"
+    ]
+  },
+  {
+    "id": "Q185682",
+    "label": "Liên bang Đông Dương",
+    "description": "liên bang các xứ thuộc địa và bảo hộ của Pháp tại Đông Nam Á",
+    "aliases": [
+      "Đông Dương thuộc Pháp",
+      "Đông Pháp"
+    ]
+  },
+  {
+    "id": "Q43467",
+    "label": "bán đảo Đông Dương",
+    "description": "khu vực ở Đông Nam Á",
+    "aliases": [
+      "Ðông Dương",
+      "Indochine",
+      "Ấn Độ Chi Na",
+      "Đông Nam Á lục địa",
+      "bán đảo Ấn–Trung",
+      "bán đảo Hoa–Ấn",
+      "bán đảo Trung Nam"
+    ]
+  },
+  {
+    "id": "Q179023",
+    "label": "đế quốc thực dân Pháp",
+    "description": "các lãnh thổ nằm dưới sự cai trị của Pháp (1534-1980)",
+    "aliases": [
+      "Các thuộc địa thực dân Pháp",
+      "Thực dân Pháp"
+    ]
+  },
+  {
+    "id": "Q933384",
+    "label": "Dinh Độc Lập",
+    "description": "di tích lịch sử tại Việt Nam, từng là nơi ở của Tổng thống Việt Nam Cộng hòa",
+    "aliases": [
+      "Hội trường Thống Nhất",
+      "Dinh Tổng thống",
+      "Dinh Thống Nhất",
+      "Phủ Đầu Rồng"
+    ]
+  },
+  {
+    "id": "Q3339372",
+    "label": "Ngô Viết Thụ",
+    "description": "Kiến trúc sư người Việt Nam",
+    "aliases": []
+  },
+  {
+    "id": "Q1854",
+    "label": "Thành phố Hồ Chí Minh",
+    "description": "thành phố trực thuộc trung ương của Việt Nam",
+    "aliases": [
+      "Sài Gòn",
+      "Saigon",
+      "Hồ Chí Minh",
+      "HCM",
+      "Sài Thành",
+      "Gia Định",
+      "Tp.HCM",
+      "Tp. HCM",
+      "TPHCM",
+      "TP. HCM",
+      "TP HCM"
+    ]
+  },
+  {
+    "id": "Q2289221",
+    "label": "Nam Bộ",
+    "description": "khu vực địa lý nằm ở phía nam của Việt Nam",
+    "aliases": [
+      "Nam Phần",
+      "miền Nam"
+    ]
+  },
+  {
+    "id": "Q5965459",
+    "label": "Phố cổ Hội An",
+    "description": "đô thị cổ ở thành phố Đà Nẵng, Việt Nam",
+    "aliases": [
+      "Thị xã Hội An",
+      "Đô thị cổ Hội An"
+    ]
+  },
+  {
+    "id": "Q36160",
+    "label": "Hội An",
+    "description": "Thành phố thuộc tỉnh Quảng Nam cũ",
+    "aliases": [
+      "Thành phố Hội An",
+      "Hội An Đông"
+    ]
+  },
+  {
+    "id": "Q33356",
+    "label": "Quảng Nam",
+    "description": "tỉnh cũ thuộc vùng Duyên hải Nam Trung Bộ của Việt Nam",
+    "aliases": [
+      "tỉnh Quảng Nam"
+    ]
+  },
+  {
+    "id": "Q206219",
+    "label": "Hoàng thành Thăng Long",
+    "description": "quần thể các tòa nhà lịch sử nằm ở trung tâm Hà Nội, Việt Nam",
+    "aliases": []
+  },
+  {
+    "id": "Q1858",
+    "label": "Hà Nội",
+    "description": "thủ đô Việt Nam",
+    "aliases": [
+      "Bắc Thành",
+      "Thăng Long",
+      "Hà Thành",
+      "Đông Đô",
+      "Đại La"
+    ]
+  },
+  {
+    "id": "Q2428694",
+    "label": "Bắc Bộ",
+    "description": "vùng địa lý nằm ở phía bắc của Việt Nam",
+    "aliases": [
+      "miền Bắc",
+      "Bắc Phần"
+    ]
+  },
+  {
+    "id": "Q391406",
+    "label": "Thánh địa Mỹ Sơn",
+    "description": "Khu di tích đền đài Ấn Độ giáo",
+    "aliases": [
+      "Tháp Mỹ Sơn",
+      "Mỹ Sơn"
+    ]
+  },
+  {
+    "id": "Q25282",
+    "label": "Đà Nẵng",
+    "description": "thành phố trực thuộc trung ương của Việt Nam",
+    "aliases": [
+      "Ðà Nẵng",
+      "TP. Đà Nẵng",
+      "Tourane",
+      "Thành phố Đà Nẵng"
+    ]
+  },
+  {
+    "id": "Q14316796",
+    "label": "Trung Bộ",
+    "description": "region of Vietnam",
+    "aliases": []
+  },
+  {
+    "id": "Q7263979",
+    "label": "Hang Pác Bó",
+    "description": "Di tích lịch sử ở Việt Nam",
+    "aliases": [
+      "Hang Pắc Bó",
+      "Pác Bó",
+      "Pắc Bó",
+      "Khu di tích lịch sử cách mạng Pắc Bó"
+    ]
+  },
+  {
+    "id": "Q23513",
+    "label": "Vườn quốc gia Phong Nha - Kẻ Bàng",
+    "description": "vườn quốc gia thuộc tỉnh Quảng Trị, Việt Nam",
+    "aliases": [
+      "Động Phong Nha-Kẻ Bàng",
+      "Vườn quốc gia Phong Nha-Kẻ Bàng",
+      "Phong Nha - Kẻ Bàng",
+      "Phong Nha-Kẻ Bàng",
+      "Phong Nha",
+      "Vườn Quốc gia Phong Nha Kẻ Bàng",
+      "Động Phong Nha",
+      "Vườn quốc gia Phong Nha",
+      "Vườn Phong Nha"
+    ]
+  },
+  {
+    "id": "Q590734",
+    "label": "Bố Trạch",
+    "description": "huyện thuộc tỉnh Quảng Bình",
+    "aliases": []
+  },
+  {
+    "id": "Q2673199",
+    "label": "Minh Hóa",
+    "description": "huyện cũ thuộc tỉnh Quảng Bình",
+    "aliases": [
+      "Minh Hoá",
+      "huyện Minh Hóa"
+    ]
+  },
+  {
+    "id": "Q23533",
+    "label": "Quảng Bình",
+    "description": "tỉnh cũ thuộc vùng Bắc Trung Bộ của Việt Nam",
+    "aliases": [
+      "tỉnh Quảng Bình"
+    ]
+  },
+  {
+    "id": "Q5964889",
+    "label": "Đền Hùng",
+    "description": "khu di tích lịch sử trên núi Nghĩa Lĩnh, thuộc đất Phong Châu xưa của người Việt cổ",
+    "aliases": [
+      "Khu di tích lịch sử Đền Hùng",
+      "Lễ hội đền Hùng",
+      "Giỗ tổ Hùng Vương",
+      "Lễ hội Đền Hùng",
+      "Hội Đền Hùng",
+      "Giỗ tổ 10/3",
+      "Hội đền Hùng"
+    ]
+  },
+  {
+    "id": "Q190060",
+    "label": "Thành nhà Hồ",
+    "description": "kinh đô nước Đại Ngu nằm trên địa phận tỉnh Thanh Hóa",
+    "aliases": [
+      "Thành Tây Đô",
+      "Thành Tây Giai"
+    ]
+  },
+  {
+    "id": "Q190128",
+    "label": "Vịnh Hạ Long",
+    "description": "vịnh ở tỉnh Quảng Ninh, Việt Nam",
+    "aliases": [
+      "Vịnh hạ-long",
+      "Hạ Long"
+    ]
+  },
+  {
+    "id": "Q10841674",
+    "label": "Đền Cửa Ông",
+    "description": "Hạ Long",
+    "aliases": []
+  },
+  {
+    "id": "Q1031051",
+    "label": "Cẩm Phả",
+    "description": "Thành phố cũ thuộc tỉnh Quảng Ninh",
+    "aliases": [
+      "Thị xã Cẩm Phả"
+    ]
+  },
+  {
+    "id": "Q33396",
+    "label": "Quảng Ninh",
+    "description": "tỉnh thuộc vùng Đồng bằng sông Hồng của Việt Nam",
+    "aliases": [
+      "Tỉnh Quảng Ninh"
+    ]
+  }
+]

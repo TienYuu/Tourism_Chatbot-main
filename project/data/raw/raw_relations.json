@@ -1,0 +1,200 @@
+[
+  {
+    "source": "Q2234243",
+    "property": "P276",
+    "target": "Q36167",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q2234243",
+    "property": "P131",
+    "target": "Q36399",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q36167",
+    "property": "P131",
+    "target": "Q36399",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q36399",
+    "property": "P131",
+    "target": "Q881",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q36399",
+    "property": "P131",
+    "target": "Q185682",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q881",
+    "property": "P361",
+    "target": "Q43467",
+    "relation": "part_of"
+  },
+  {
+    "source": "Q185682",
+    "property": "P361",
+    "target": "Q179023",
+    "relation": "part_of"
+  },
+  {
+    "source": "Q43467",
+    "property": "P361",
+    "target": "Q48",
+    "relation": "part_of"
+  },
+  {
+    "source": "Q933384",
+    "property": "P84",
+    "target": "Q3339372",
+    "relation": "architect"
+  },
+  {
+    "source": "Q933384",
+    "property": "P131",
+    "target": "Q1854",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q1854",
+    "property": "P131",
+    "target": "Q881",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q1854",
+    "property": "P361",
+    "target": "Q2289221",
+    "relation": "part_of"
+  },
+  {
+    "source": "Q1854",
+    "property": "P361",
+    "target": "Q881",
+    "relation": "part_of"
+  },
+  {
+    "source": "Q5965459",
+    "property": "P131",
+    "target": "Q36160",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q36160",
+    "property": "P131",
+    "target": "Q33356",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q33356",
+    "property": "P131",
+    "target": "Q881",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q206219",
+    "property": "P131",
+    "target": "Q1858",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q1858",
+    "property": "P361",
+    "target": "Q2428694",
+    "relation": "part_of"
+  },
+  {
+    "source": "Q1858",
+    "property": "P131",
+    "target": "Q881",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q391406",
+    "property": "P131",
+    "target": "Q25282",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q25282",
+    "property": "P131",
+    "target": "Q881",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q25282",
+    "property": "P361",
+    "target": "Q14316796",
+    "relation": "part_of"
+  },
+  {
+    "source": "Q14316796",
+    "property": "P361",
+    "target": "Q881",
+    "relation": "part_of"
+  },
+  {
+    "source": "Q23513",
+    "property": "P131",
+    "target": "Q590734",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q23513",
+    "property": "P131",
+    "target": "Q2673199",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q23513",
+    "property": "P361",
+    "target": "Q14316796",
+    "relation": "part_of"
+  },
+  {
+    "source": "Q23513",
+    "property": "P276",
+    "target": "Q23533",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q590734",
+    "property": "P131",
+    "target": "Q23533",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q2673199",
+    "property": "P131",
+    "target": "Q23533",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q23533",
+    "property": "P131",
+    "target": "Q881",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q10841674",
+    "property": "P131",
+    "target": "Q1031051",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q1031051",
+    "property": "P131",
+    "target": "Q33396",
+    "relation": "located_in"
+  },
+  {
+    "source": "Q33396",
+    "property": "P131",
+    "target": "Q881",
+    "relation": "located_in"
+  }
+]

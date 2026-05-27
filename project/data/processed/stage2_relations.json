@@ -1,0 +1,200 @@
+[
+  {
+    "source": "Q2234243",
+    "target": "Q36167",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q2234243",
+    "target": "Q36399",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q36167",
+    "target": "Q36399",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q36399",
+    "target": "Q881",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q36399",
+    "target": "Q185682",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q881",
+    "target": "Q43467",
+    "relation": "P46_is_composed_of",
+    "original_relation": "part_of"
+  },
+  {
+    "source": "Q185682",
+    "target": "Q179023",
+    "relation": "P46_is_composed_of",
+    "original_relation": "part_of"
+  },
+  {
+    "source": "Q43467",
+    "target": "Q48",
+    "relation": "P46_is_composed_of",
+    "original_relation": "part_of"
+  },
+  {
+    "source": "Q933384",
+    "target": "Q3339372",
+    "relation": "P14_carried_out_by",
+    "original_relation": "architect"
+  },
+  {
+    "source": "Q933384",
+    "target": "Q1854",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q1854",
+    "target": "Q881",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q1854",
+    "target": "Q2289221",
+    "relation": "P46_is_composed_of",
+    "original_relation": "part_of"
+  },
+  {
+    "source": "Q1854",
+    "target": "Q881",
+    "relation": "P46_is_composed_of",
+    "original_relation": "part_of"
+  },
+  {
+    "source": "Q5965459",
+    "target": "Q36160",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q36160",
+    "target": "Q33356",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q33356",
+    "target": "Q881",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q206219",
+    "target": "Q1858",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q1858",
+    "target": "Q2428694",
+    "relation": "P46_is_composed_of",
+    "original_relation": "part_of"
+  },
+  {
+    "source": "Q1858",
+    "target": "Q881",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q391406",
+    "target": "Q25282",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q25282",
+    "target": "Q881",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q25282",
+    "target": "Q14316796",
+    "relation": "P46_is_composed_of",
+    "original_relation": "part_of"
+  },
+  {
+    "source": "Q14316796",
+    "target": "Q881",
+    "relation": "P46_is_composed_of",
+    "original_relation": "part_of"
+  },
+  {
+    "source": "Q23513",
+    "target": "Q590734",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q23513",
+    "target": "Q2673199",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q23513",
+    "target": "Q14316796",
+    "relation": "P46_is_composed_of",
+    "original_relation": "part_of"
+  },
+  {
+    "source": "Q23513",
+    "target": "Q23533",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q590734",
+    "target": "Q23533",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q2673199",
+    "target": "Q23533",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q23533",
+    "target": "Q881",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q10841674",
+    "target": "Q1031051",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q1031051",
+    "target": "Q33396",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  },
+  {
+    "source": "Q33396",
+    "target": "Q881",
+    "relation": "P53_has_former_or_current_location",
+    "original_relation": "located_in"
+  }
+]

@@ -1,0 +1,239 @@
+Bạn cần thêm gì?
+1. QUERY PLANNER (quan trọng nhất)
+
+Thay vì:
+
+{
+  "reasoning_type": "location"
+}
+
+LLM phải sinh:
+
+{
+  "task": "find_location_hierarchy",
+  "start_entity": "Tháp Eiffel",
+  "target_constraint": "Paris",
+  "max_hops": 3,
+  "relation_types": [
+    "P53_has_former_or_current_location"
+  ]
+}
+2. DYNAMIC GRAPH RETRIEVAL
+
+Thay vì:
+
+get_location_hierarchy()
+
+cứng.
+
+Bạn cần:
+
+execute_graph_plan(plan)
+
+Ví dụ:
+
+MATCH p =
+(a)-[:P53_has_former_or_current_location*1..3]->(b)
+
+được sinh động từ plan.
+
+3. RELATION SEMANTIC MATCHING
+
+User hỏi:
+
+Tháp Eiffel nằm ở đâu?
+
+LLM phải hiểu:
+
+"nằm ở"
+≈
+P53_has_former_or_current_location
+4. ENTITY LINKING thật sự
+
+Hiện tại:
+
+search_entity(keyword)
+
+Chatbot thật cần:
+
+Candidate generation
+"Eiffel"
+→ Eiffel Tower
+→ Gustave Eiffel
+→ Eiffel district
+Candidate ranking
+
+dựa trên:
+
+semantic similarity
+graph centrality
+type matching
+context
+5. GRAPH EXPLORATION AGENT
+
+Đây là bước lớn nhất.
+
+Thay vì:
+
+query -> answer
+
+Agent sẽ:
+
+Question
+    ↓
+Search node
+    ↓
+Expand neighbors
+    ↓
+Score paths
+    ↓
+Continue traversal
+    ↓
+Stop when evidence đủ
+
+Giống:
+
+GraphRAG
+Microsoft GraphRAG
+KG-Agent
+Deep Research
+Ví dụ thực tế
+
+User:
+
+Những công trình nào ở Paris được làm bằng sắt?
+
+Hệ thống thật sẽ:
+
+Step 1
+
+Tìm:
+
+Paris
+sắt
+Step 2
+
+Graph expansion:
+
+Paris
+← location
+Site
+→ material
+Iron
+Step 3
+
+Tự sinh Cypher:
+
+MATCH
+(site)-[:P53_has_former_or_current_location]->(paris),
+(site)-[:P45_consists_of]->(iron)
+6. VECTOR + GRAPH HYBRID RETRIEVAL
+
+Hiện tại bạn chỉ dùng graph.
+
+Chatbot production sẽ:
+
+Question
+    ↓
+Vector retrieval
++
+Graph retrieval
+    ↓
+Fusion
+
+Ví dụ:
+
+chunk Wikipedia
+embedding
+semantic reranking
+7. MEMORY
+
+Chatbot thật cần:
+
+User:
+"nó nằm ở đâu?"
+
+phải hiểu:
+
+"nó" = Tháp Eiffel
+
+=> conversational memory.
+
+Kiến trúc bạn nên hướng tới
+User Question
+    ↓
+LLM Query Planner
+    ↓
+Entity Linking
+    ↓
+Graph Retrieval Agent
+    ↓
+Multi-hop Traversal
+    ↓
+Evidence Collection
+    ↓
+LLM Reasoner
+    ↓
+Final Answer
+Cái QUAN TRỌNG NHẤT bạn đang thiếu
+Dynamic Cypher Generation
+
+Hiện tại bạn:
+
+hardcode retrieval functions
+
+Production:
+
+LLM tự generate graph query plan
+system execute safely
+Giai đoạn nâng cấp hợp lý
+Giai đoạn 1 (bạn đang ở đây)
+
+✅ Fixed retrieval methods
+
+Giai đoạn 2
+
+✅ Dynamic planner
+
+Ví dụ:
+
+{
+  "relations": [...],
+  "constraints": [...],
+  "hop": 3
+}
+Giai đoạn 3
+
+✅ Autonomous graph agent
+
+Tự explore graph.
+
+Recommendation thực tế cho project của bạn
+
+Bước tiếp theo tốt nhất KHÔNG phải:
+
+UI
+prompt
+thêm relation
+
+Mà là:
+
+Hãy xây:
+graph_reasoning_agent.py
+
+Nó sẽ:
+
+nhận question
+lập retrieval plan
+explore graph
+score paths
+collect evidence
+trả context
+
+Đó là bước biến hệ thống của bạn từ:
+
+Neo4j QA demo
+
+thành:
+
+real GraphRAG system

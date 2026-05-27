@@ -1,0 +1,1068 @@
+[
+  {
+    "id": "Q2234243",
+    "label": "Cố đô Huế",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "Thành phố cổ, kinh đô của Việt Nam thời chúa Nguyễn, Tây Sơn và nhà Nguyễn",
+    "latitude": 16.466666666666665,
+    "longitude": 107.58333333333333,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q15661340",
+          "label": "thành phố cổ"
+        },
+        {
+          "id": "Q515",
+          "label": "thành phố"
+        },
+        {
+          "id": "Q57821",
+          "label": "công sự"
+        },
+        {
+          "id": "Q210272",
+          "label": "di sản văn hóa"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q6500483",
+          "label": "nhà Nguyễn"
+        },
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.944709"
+  },
+  {
+    "id": "Q36167",
+    "label": "Huế",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "thành phố tỉnh lỵ của tỉnh Thừa Thiên Huế",
+    "latitude": 16.456111111111,
+    "longitude": 107.57638888889,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q3249005",
+          "label": "thành phố thuộc tỉnh của Việt Nam"
+        },
+        {
+          "id": "Q27554677",
+          "label": "cố đô"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        },
+        {
+          "id": "Q185682",
+          "label": "Liên bang Đông Dương"
+        },
+        {
+          "id": "Q701337",
+          "label": "Đế quốc Việt Nam"
+        },
+        {
+          "id": "Q6500483",
+          "label": "nhà Nguyễn"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.947188"
+  },
+  {
+    "id": "Q36399",
+    "label": "Huế",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "thành phố trực thuộc trung ương của Việt Nam",
+    "latitude": 16.46388888888889,
+    "longitude": 107.58666666666667,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q1381899",
+          "label": "thành phố trực thuộc trung ương của Việt Nam"
+        },
+        {
+          "id": "Q515",
+          "label": "thành phố"
+        },
+        {
+          "id": "Q27554677",
+          "label": "cố đô"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.949344"
+  },
+  {
+    "id": "Q881",
+    "label": "Việt Nam",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "quốc gia ở Đông Nam Á",
+    "latitude": 16,
+    "longitude": 108,
+    "inception": "+1976-07-02T00:00:00Z",
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q3624078",
+          "label": "quốc gia có chủ quyền"
+        },
+        {
+          "id": "Q849866",
+          "label": "quốc gia cộng sản"
+        },
+        {
+          "id": "Q6256",
+          "label": "quốc gia"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.951308"
+  },
+  {
+    "id": "Q185682",
+    "label": "Liên bang Đông Dương",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "liên bang các xứ thuộc địa và bảo hộ của Pháp tại Đông Nam Á",
+    "latitude": 21.033333333333,
+    "longitude": 105.85,
+    "inception": "+1887-01-01T00:00:00Z",
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q43702",
+          "label": "liên bang"
+        },
+        {
+          "id": "Q3024240",
+          "label": "cựu quốc gia"
+        },
+        {
+          "id": "Q133156",
+          "label": "thuộc địa"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        },
+        {
+          "id": "Q819",
+          "label": "Lào"
+        },
+        {
+          "id": "Q424",
+          "label": "Campuchia"
+        },
+        {
+          "id": "Q148",
+          "label": "Trung Quốc"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.956798"
+  },
+  {
+    "id": "Q43467",
+    "label": "bán đảo Đông Dương",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "khu vực ở Đông Nam Á",
+    "latitude": 16,
+    "longitude": 102,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q34763",
+          "label": "bán đảo"
+        },
+        {
+          "id": "Q82794",
+          "label": "vùng"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q836",
+          "label": "Myanma"
+        },
+        {
+          "id": "Q424",
+          "label": "Campuchia"
+        },
+        {
+          "id": "Q819",
+          "label": "Lào"
+        },
+        {
+          "id": "Q833",
+          "label": "Malaysia"
+        },
+        {
+          "id": "Q869",
+          "label": "Thái Lan"
+        },
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        },
+        {
+          "id": "Q334",
+          "label": "Singapore"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.958740"
+  },
+  {
+    "id": "Q179023",
+    "label": "đế quốc thực dân Pháp",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "các lãnh thổ nằm dưới sự cai trị của Pháp (1534-1980)",
+    "latitude": 48.85,
+    "longitude": -2.35,
+    "inception": "+1534-01-01T00:00:00Z",
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q1790360",
+          "label": "đế quốc thuộc địa"
+        },
+        {
+          "id": "Q3024240",
+          "label": "cựu quốc gia"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q142",
+          "label": "Pháp"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.965156"
+  },
+  {
+    "id": "Q933384",
+    "label": "Dinh Độc Lập",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "di tích lịch sử tại Việt Nam, từng là nơi ở của Tổng thống Việt Nam Cộng hòa",
+    "latitude": 10.77705,
+    "longitude": 106.69537,
+    "inception": "+1955-00-00T00:00:00Z",
+    "address": "135 Nam Kỳ Khởi Nghĩa, Phường Bến Thành, Quận 1, Hồ Chí Minh 700000",
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q2114972",
+          "label": "dinh tổng thống"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.971088"
+  },
+  {
+    "id": "Q3339372",
+    "label": "Ngô Viết Thụ",
+    "type": "E21_Person",
+    "ner_type": "PER",
+    "description": "Kiến trúc sư người Việt Nam",
+    "latitude": null,
+    "longitude": null,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q5",
+          "label": "người"
+        }
+      ],
+      "heritage_designation": [],
+      "country": []
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.972725"
+  },
+  {
+    "id": "Q1854",
+    "label": "Thành phố Hồ Chí Minh",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "thành phố trực thuộc trung ương của Việt Nam",
+    "latitude": 10.775555555555556,
+    "longitude": 106.70194444444445,
+    "inception": "+1976-00-00T00:00:00Z",
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q1381899",
+          "label": "thành phố trực thuộc trung ương của Việt Nam"
+        },
+        {
+          "id": "Q515",
+          "label": "thành phố"
+        },
+        {
+          "id": "Q1549591",
+          "label": "thành phố lớn"
+        },
+        {
+          "id": "Q174844",
+          "label": "siêu đô thị"
+        },
+        {
+          "id": "Q51929311",
+          "label": "thành phố lớn nhất"
+        },
+        {
+          "id": "Q1074523",
+          "label": "planned community"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        },
+        {
+          "id": "Q180573",
+          "label": "Việt Nam Cộng hòa"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.975238"
+  },
+  {
+    "id": "Q2289221",
+    "label": "Nam Bộ",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "khu vực địa lý nằm ở phía nam của Việt Nam",
+    "latitude": 10.876,
+    "longitude": 106.743,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q10794275",
+          "label": "miền Việt Nam"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.978647"
+  },
+  {
+    "id": "Q5965459",
+    "label": "Phố cổ Hội An",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "đô thị cổ ở thành phố Đà Nẵng, Việt Nam",
+    "latitude": 15.877135,
+    "longitude": 108.328631,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q676050",
+          "label": "phố cổ"
+        }
+      ],
+      "heritage_designation": [
+        {
+          "id": "Q9259",
+          "label": "di sản thế giới"
+        }
+      ],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.982109"
+  },
+  {
+    "id": "Q36160",
+    "label": "Hội An",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "Thành phố thuộc tỉnh Quảng Nam cũ",
+    "latitude": 15.877669444444445,
+    "longitude": 108.33265,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q3249005",
+          "label": "thành phố thuộc tỉnh của Việt Nam"
+        },
+        {
+          "id": "Q1549591",
+          "label": "thành phố lớn"
+        },
+        {
+          "id": "Q2264924",
+          "label": "thành phố cảng"
+        }
+      ],
+      "heritage_designation": [
+        {
+          "id": "Q9259",
+          "label": "di sản thế giới"
+        }
+      ],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.984407"
+  },
+  {
+    "id": "Q33356",
+    "label": "Quảng Nam",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "tỉnh cũ thuộc vùng Duyên hải Nam Trung Bộ của Việt Nam",
+    "latitude": 15.55,
+    "longitude": 108.05,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q137325529",
+          "label": "tỉnh cũ của Việt Nam"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.987594"
+  },
+  {
+    "id": "Q206219",
+    "label": "Hoàng thành Thăng Long",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "quần thể các tòa nhà lịch sử nằm ở trung tâm Hà Nội, Việt Nam",
+    "latitude": 21.0325,
+    "longitude": 105.83972,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q88291",
+          "label": "citadel"
+        },
+        {
+          "id": "Q618123",
+          "label": "địa điểm"
+        }
+      ],
+      "heritage_designation": [
+        {
+          "id": "Q9259",
+          "label": "di sản thế giới"
+        }
+      ],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.992531"
+  },
+  {
+    "id": "Q1858",
+    "label": "Hà Nội",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "thủ đô Việt Nam",
+    "latitude": 21.0245,
+    "longitude": 105.84117,
+    "inception": "+1010-00-00T00:00:00Z",
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q1381899",
+          "label": "thành phố trực thuộc trung ương của Việt Nam"
+        },
+        {
+          "id": "Q1549591",
+          "label": "thành phố lớn"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.993656"
+  },
+  {
+    "id": "Q2428694",
+    "label": "Bắc Bộ",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "vùng địa lý nằm ở phía bắc của Việt Nam",
+    "latitude": 21.58,
+    "longitude": 105.22,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q10794275",
+          "label": "miền Việt Nam"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.996728"
+  },
+  {
+    "id": "Q391406",
+    "label": "Thánh địa Mỹ Sơn",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "Khu di tích đền đài Ấn Độ giáo",
+    "latitude": 15.76324,
+    "longitude": 108.124446,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q842402",
+          "label": "đền Hindu"
+        },
+        {
+          "id": "Q839954",
+          "label": "di chỉ"
+        }
+      ],
+      "heritage_designation": [
+        {
+          "id": "Q9259",
+          "label": "di sản thế giới"
+        }
+      ],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:08.999257"
+  },
+  {
+    "id": "Q25282",
+    "label": "Đà Nẵng",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "thành phố trực thuộc trung ương của Việt Nam",
+    "latitude": 16.069444444444443,
+    "longitude": 108.20972222222223,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q1381899",
+          "label": "thành phố trực thuộc trung ương của Việt Nam"
+        },
+        {
+          "id": "Q515",
+          "label": "thành phố"
+        },
+        {
+          "id": "Q1549591",
+          "label": "thành phố lớn"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.001337"
+  },
+  {
+    "id": "Q14316796",
+    "label": "Trung Bộ",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "region of Vietnam",
+    "latitude": 16.49,
+    "longitude": 107.36,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q183366",
+          "label": "lãnh thổ"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.002226"
+  },
+  {
+    "id": "Q7263979",
+    "label": "Hang Pác Bó",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "Di tích lịch sử ở Việt Nam",
+    "latitude": 22.978,
+    "longitude": 106.054,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q486972",
+          "label": "khu định cư"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.004419"
+  },
+  {
+    "id": "Q23513",
+    "label": "Vườn quốc gia Phong Nha - Kẻ Bàng",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "vườn quốc gia thuộc tỉnh Quảng Trị, Việt Nam",
+    "latitude": 17.533333333333,
+    "longitude": 106.15,
+    "inception": "+2001-00-00T00:00:00Z",
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q122395435",
+          "label": "vườn quốc gia tại Việt Nam"
+        }
+      ],
+      "heritage_designation": [
+        {
+          "id": "Q9259",
+          "label": "di sản thế giới"
+        }
+      ],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.008066"
+  },
+  {
+    "id": "Q590734",
+    "label": "Bố Trạch",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "huyện thuộc tỉnh Quảng Bình",
+    "latitude": 17.587497,
+    "longitude": 106.533592,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q2582669",
+          "label": "huyện của Việt Nam"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.009581"
+  },
+  {
+    "id": "Q2673199",
+    "label": "Minh Hóa",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "huyện cũ thuộc tỉnh Quảng Bình",
+    "latitude": 17.75,
+    "longitude": 105.917,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q2582669",
+          "label": "huyện của Việt Nam"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.011828"
+  },
+  {
+    "id": "Q23533",
+    "label": "Quảng Bình",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "tỉnh cũ thuộc vùng Bắc Trung Bộ của Việt Nam",
+    "latitude": 17.5,
+    "longitude": 106.33333333333,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q137325529",
+          "label": "tỉnh cũ của Việt Nam"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.014365"
+  },
+  {
+    "id": "Q5964889",
+    "label": "Đền Hùng",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "khu di tích lịch sử trên núi Nghĩa Lĩnh, thuộc đất Phong Châu xưa của người Việt cổ",
+    "latitude": 21.365533,
+    "longitude": 105.324627,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q4989906",
+          "label": "tượng đài"
+        },
+        {
+          "id": "Q44539",
+          "label": "đền"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.020214"
+  },
+  {
+    "id": "Q190060",
+    "label": "Thành nhà Hồ",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "kinh đô nước Đại Ngu nằm trên địa phận tỉnh Thanh Hóa",
+    "latitude": 20.078055555556,
+    "longitude": 105.60472222222,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q473972",
+          "label": "khu vực được bảo vệ"
+        },
+        {
+          "id": "Q88291",
+          "label": "citadel"
+        }
+      ],
+      "heritage_designation": [
+        {
+          "id": "Q9259",
+          "label": "di sản thế giới"
+        }
+      ],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.023533"
+  },
+  {
+    "id": "Q190128",
+    "label": "Vịnh Hạ Long",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "vịnh ở tỉnh Quảng Ninh, Việt Nam",
+    "latitude": 20.9,
+    "longitude": 107.2,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q39594",
+          "label": "vịnh"
+        },
+        {
+          "id": "Q570116",
+          "label": "điểm tham quan"
+        }
+      ],
+      "heritage_designation": [
+        {
+          "id": "Q9259",
+          "label": "di sản thế giới"
+        }
+      ],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.026240"
+  },
+  {
+    "id": "Q10841674",
+    "label": "Đền Cửa Ông",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "Hạ Long",
+    "latitude": 21.027,
+    "longitude": 107.37,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q44539",
+          "label": "đền"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.027321"
+  },
+  {
+    "id": "Q1031051",
+    "label": "Cẩm Phả",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "Thành phố cũ thuộc tỉnh Quảng Ninh",
+    "latitude": 21.006545,
+    "longitude": 107.272585,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q3249005",
+          "label": "thành phố thuộc tỉnh của Việt Nam"
+        },
+        {
+          "id": "Q1549591",
+          "label": "thành phố lớn"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.029234"
+  },
+  {
+    "id": "Q33396",
+    "label": "Quảng Ninh",
+    "type": "E27_Site",
+    "ner_type": "FAC",
+    "description": "tỉnh thuộc vùng Đồng bằng sông Hồng của Việt Nam",
+    "latitude": 21.25,
+    "longitude": 107.33333333333,
+    "inception": null,
+    "address": null,
+    "wd_properties": {
+      "instance_of": [
+        {
+          "id": "Q2824648",
+          "label": "tỉnh của Việt Nam"
+        }
+      ],
+      "heritage_designation": [],
+      "country": [
+        {
+          "id": "Q881",
+          "label": "Việt Nam"
+        }
+      ]
+    },
+    "source": "wikidata",
+    "download_date": "2026-05-27T18:16:09.031875"
+  }
+]
