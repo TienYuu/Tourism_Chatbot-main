@@ -1,0 +1,6 @@
+# Chặn các file cấu hình môi trường
+.env
+.env.*
+
+# Chặn thư mục dữ liệu
+data/*
