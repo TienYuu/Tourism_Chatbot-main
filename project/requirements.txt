@@ -13,3 +13,6 @@ underthesea
 streamlit 
 neo4j
 groq
+scikit-learn
+torch
+rapidfuzz

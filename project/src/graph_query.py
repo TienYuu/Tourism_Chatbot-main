@@ -76,7 +76,22 @@ class HeritageGraphQuery:
     # LOW LEVEL QUERY
     # ========================================================
     
-
+    def get_subgraph_context(self, entity_name, hops=2):
+        # CHỈ tìm theo 'label' vì DB của bạn không có 'name'
+        query = """
+        MATCH (n) 
+        WHERE n.label =~ $regex
+        MATCH path = (n)-[r*1..%d]-(m)
+        RETURN path LIMIT 30
+        """ % hops
+        
+        # Sử dụng Regex không phân biệt hoa thường để tìm "Huế" trong "Cố đô Huế"
+        regex = f"(?i).*{entity_name}.*"
+        
+        with self.driver.session(database=DATABASE) as session:
+            result = session.run(query, regex=regex)
+            return [record["path"] for record in result]
+    
     def multi_hop_location_reasoning(
         self,
         entity_label: str,

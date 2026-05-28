@@ -1,186 +1,23 @@
 class EvidenceBuilder:
-
-    # ========================================================
-    # DEFAULT ENTITY CONTEXT
-    # ========================================================
-
-    def build_context(
-        self,
-        kg_results
-    ):
-
-        context = []
-
-        provenance = []
-
-        for item in kg_results:
-
-            fact = f"""
-Entity:
-{item.get('label', '')}
-
-Description:
-{item.get('description', '')}
-
-Type:
-{item.get('type', '')}
-"""
-
-            # ----------------------------------------------
-            # OPTIONAL FIELDS
-            # ----------------------------------------------
-
-            if item.get("country"):
-
-                fact += f"""
-Country:
-{item.get('country')}
-"""
-
-            if item.get("instance_of"):
-
-                fact += f"""
-Instance Of:
-{item.get('instance_of')}
-"""
-
-            if (
-                item.get("latitude") is not None
-                and item.get("longitude") is not None
-            ):
-
-                fact += f"""
-Coordinates:
-({item.get('latitude')}, {item.get('longitude')})
-"""
-
-            context.append(fact)
-
-            provenance.append({
-
-                "label":
-                item.get("label"),
-
-                "source":
-                item.get(
-                    "source",
-                    "neo4j"
-                ),
-
-                "evidence_type":
-                "KG_ENTITY"
-            })
-
-        return {
-
-            "context":
-            "\n".join(context),
-
-            "provenance":
-            provenance
-        }
-
-    # ========================================================
-    # MULTI HOP REASONING
-    # ========================================================
-
-    def build_multi_hop_context(
-        self,
-        paths
-    ):
-
-        context = []
-
-        provenance = []
-
-        for p in paths:
-
-            nodes = p.get(
-                "path_nodes",
-                []
-            )
-
-            if not nodes:
-                continue
-
-            chain = []
-
-            for n in nodes:
-
-                chain.append(
-                    f"{n.get('label')} ({n.get('type')})"
-                )
-
-            chain_text = " -> ".join(chain)
-
-            context.append(
-                f"""
-Location reasoning chain:
-{chain_text}
-"""
-            )
-
-            provenance.append({
-
-                "reasoning_type":
-                "multi_hop_graph_traversal",
-
-                "path":
-                chain
-            })
-
-        return {
-
-            "context":
-            "\n".join(context),
-
-            "provenance":
-            provenance
-        }
-
-    # ========================================================
-    # RELATION CONTEXT
-    # ========================================================
-
-    def build_relation_context(
-        self,
-        relations
-    ):
-
-        context = []
-
-        provenance = []
-
-        for rel in relations:
-
-            fact = f"""
-{rel.get('source')}
--[{rel.get('relation')}]->
-{rel.get('target')}
-"""
-
-            context.append(fact)
-
-            provenance.append({
-
-                "source":
-                rel.get("source"),
-
-                "target":
-                rel.get("target"),
-
-                "relation":
-                rel.get("relation"),
-
-                "evidence_type":
-                "KG_RELATION"
-            })
-
-        return {
-
-            "context":
-            "\n".join(context),
-
-            "provenance":
-            provenance
-        }
+    def build_dynamic_evidence(self, paths):
+        facts = []
+        for path in paths:
+            for rel in path.relationships:
+                # Lấy tên nhãn thay vì mã P53 nếu có thể, hoặc giữ nguyên để LLM tự suy luận
+                rel_type = rel.type.replace("P53_", "").replace("_", " ")
+                start_label = rel.start_node.get('label', 'Unknown')
+                end_label = rel.end_node.get('label', 'Unknown')
+                
+                facts.append(f"Fact: {start_label} có mối quan hệ '{rel_type}' với {end_label}")
+                
+                # Xử lý các thuộc tính dạng list (như instance_of, country trong debug của bạn)
+                for node in [rel.start_node, rel.end_node]:
+                    properties = []
+                    for key, value in node.items():
+                        if value:
+                            # Nếu là list, nối lại thành chuỗi
+                            val_str = ", ".join(value) if isinstance(value, list) else value
+                            properties.append(f"{key}: {val_str}")
+                    facts.append(f"Chi tiết về [{node.get('label')}]: {'; '.join(properties)}")
+        
+        return "\n".join(list(set(facts)))

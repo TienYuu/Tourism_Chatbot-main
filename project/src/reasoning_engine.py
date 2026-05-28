@@ -1,122 +1,33 @@
 import re
-
+import json
 from graph_query import HeritageGraphQuery
-
+from groq_client import extract_question_entities
+from utils import safe_json_load 
 
 class HeritageReasoner:
+    def __init__(self, graph, builder):
+        self.graph = graph
+        self.builder = builder
 
-    def __init__(self):
+    def reason(self, question):
+        # Gọi trực tiếp hàm, không dùng self.client
+        raw_output = extract_question_entities(question) 
+        
+        # CHỖ CẦN SỬA: Chuyển chuỗi thành dictionary
+        try:
+            parsed = json.loads(raw_output) 
+        except:
+            # Sử dụng hàm safe_json_load của bạn để xử lý các ký tự thừa
+            parsed = safe_json_load(raw_output) 
 
-        self.graph = HeritageGraphQuery()
-
-    # ========================================================
-    # MAIN QA
-    # ========================================================
-
-    def answer(
-        self,
-        question: str
-    ):
-
-        q = question.lower()
-
-        # ----------------------------------------------------
-        # DISTRICT OF CITY
-        # ----------------------------------------------------
-
-        if "quận nào" in q:
-
-            return self._reason_district(
-                question
-            )
-
-        # ----------------------------------------------------
-        # DEFAULT
-        # ----------------------------------------------------
-
-        return {
-            "answer": "Chưa hỗ trợ dạng suy luận này.",
-            "evidence": []
-        }
-
-    # ========================================================
-    # REASON: DISTRICT
-    # ========================================================
-
-    def _reason_district(
-        self,
-        question: str
-    ):
-
-        # ----------------------------------------------------
-        # EXTRACT ENTITY
-        # ----------------------------------------------------
-
-        entities = self.graph.search_entity(
-            question
-        )
-
-        if not entities:
-
-            return {
-                "answer": "Không tìm thấy thực thể.",
-                "evidence": []
-            }
-
-        source = entities[0]
-
-        source_id = source["id"]
-
-        # ----------------------------------------------------
-        # MULTI HOP QUERY
-        # ----------------------------------------------------
-
-        cypher = """
-        MATCH path =
-        (a:Entity {id: $source_id})
-        -[:P53_has_former_or_current_location*1..3]->
-        (b:Entity)
-
-        RETURN path
-        """
-
-        results = self.graph.run_query(
-            cypher,
-            {
-                "source_id": source_id
-            }
-        )
-
-        # ----------------------------------------------------
-        # REASONING
-        # ----------------------------------------------------
-
-        for row in results:
-
-            path = row["path"]
-
-            nodes = path.nodes
-
-            labels = [
-                n.get("label")
-                for n in nodes
-            ]
-
-            # Example:
-            # ["Tháp Eiffel", "Quận 7", "Paris"]
-
-            if "Paris" in labels:
-
-                if len(labels) >= 2:
-
-                    district = labels[-2]
-
-                    return {
-                        "answer": district,
-                        "evidence": labels
-                    }
-
-        return {
-            "answer": "Không suy luận được.",
-            "evidence": []
-        }
+        # Bây giờ parsed đã là dict, lệnh get() sẽ hoạt động
+        entities = parsed.get("entities", [])
+        
+        all_context = ""
+        for entity in entities:
+            # 2. Truy vấn vùng đồ thị xung quanh thực thể (Dynamic Multi-hop)
+            paths = self.graph.get_subgraph_context(entity, hops=2)
+            # 3. Chuyển đổi thành văn bản facts
+            all_context += self.builder.build_dynamic_evidence(paths) + "\n"
+            
+        return all_context

@@ -1,386 +1,278 @@
-import json
+# app.py
+
 import streamlit as st
 
-from graph_query import HeritageGraphQuery
+from groq_client import GroqClient
 
-from groq_client import (
-    ask_groq,
-    extract_question_entities
-)
+from graph.graph_query import GraphQuery
+from graph.traversal_engine import TraversalEngine
 
-from evidence_builder import (
-    EvidenceBuilder
-)
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-# ============================================================
-# INIT
-# ============================================================
+from reasoning.semantic_parser import SemanticParser
+from reasoning.path_ranker import PathRanker
+from reasoning.planner import Planner
+from reasoning.reasoning_engine import ReasoningEngine
+
+from utils_new.entity_linker import EntityLinker
+
+
+# =========================================================
+# PAGE CONFIG
+# =========================================================
 
 st.set_page_config(
-    page_title="Vietnam Heritage KG Chatbot",
+    page_title="Historical KG Reasoning",
     layout="wide"
 )
 
-graph = HeritageGraphQuery()
+st.title("Historical KG Reasoning System")
 
-builder = EvidenceBuilder()
+# =========================================================
+# ENV CONFIG
+# =========================================================
 
-st.title("Vietnam Heritage Knowledge Graph Chatbot")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
-st.markdown("""
-Hệ thống hỏi đáp sử dụng:
-- Neo4j Knowledge Graph
-- Multi-hop Graph Reasoning
-- Wikidata + Wikipedia
-- Groq LLM
-""")
+NEO4J_URI = os.getenv("NEO4J_URI")
 
-# ============================================================
-# HELPERS
-# ============================================================
+NEO4J_USER = os.getenv("NEO4J_USER")
 
-def safe_json_load(raw_text):
+NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 
-    try:
+NEO4J_DATABASE = os.getenv("NEO4J_DATABASE")
 
-        return json.loads(raw_text)
+# =========================================================
+# INIT SYSTEM
+# =========================================================
 
-    except Exception:
+def initialize_system():
 
-        # fallback nếu LLM trả markdown
-        raw_text = raw_text.replace("```json", "")
-        raw_text = raw_text.replace("```", "")
-
-        return json.loads(raw_text)
-
-def is_location_reasoning(reasoning_type):
-
-    reasoning_type = (
-        reasoning_type or ""
-    ).lower()
-
-    LOCATION_TYPES = [
-        "location",
-        "location-based",
-        "geographical",
-        "geography",
-        "place",
-        "spatial",
-        "geo",
-        "multi_hop"
-    ]
-
-    return any(
-        rt in reasoning_type
-        for rt in LOCATION_TYPES
+    st.write("Init GraphQuery")
+    graph_query = GraphQuery(
+        uri=NEO4J_URI,
+        username=NEO4J_USER,
+        password=NEO4J_PASSWORD,
+        database=NEO4J_DATABASE
     )
 
-def detect_reasoning_type(parsed):
+    st.write("Init GroqClient")
+    groq_client = GroqClient(
+        api_key=GROQ_API_KEY
+    )
 
-    reasoning = parsed.get(
-        "reasoning",
-        ""
-    ).lower()
+    st.write("Init EntityLinker")
+    entity_linker = EntityLinker(
+        graph_query
+    )
 
-    return reasoning
+    st.write("Init SemanticParser")
+    semantic_parser = SemanticParser(
+        groq_client
+    )
+
+    st.write("Init PathRanker")
+    path_ranker = PathRanker()
+
+    st.write("Init TraversalEngine")
+    traversal_engine = TraversalEngine(
+        graph_query=graph_query,
+        path_ranker=path_ranker
+    )
+
+    st.write("Init Planner")
+    planner = Planner()
+
+    st.write("Init ReasoningEngine")
+    reasoning_engine = ReasoningEngine(
+        semantic_parser=semantic_parser,
+        entity_linker=entity_linker,
+        planner=planner,
+        traversal_engine=traversal_engine
+    )
+
+    return reasoning_engine
 
 
-# ============================================================
-# USER INPUT
-# ============================================================
+# =========================================================
+# INIT BUTTON
+# =========================================================
 
-question = st.text_input(
-    "Nhập câu hỏi"
-)
-
-# ============================================================
-# MAIN QA PIPELINE
-# ============================================================
-
-if question:
-
-    st.divider()
-
-    # ========================================================
-    # STEP 1 — QUESTION ANALYSIS
-    # ========================================================
-
-    st.subheader("1. Question Analysis")
+if st.button("Initialize System"):
 
     try:
 
-        analysis_raw = extract_question_entities(
-            question
+        st.session_state.system = (
+            initialize_system()
         )
 
-        parsed = safe_json_load(
-            analysis_raw
-        )
+        st.success("System initialized.")
 
     except Exception as e:
 
+        st.error(str(e))
+
+# =========================================================
+# QUESTION INPUT
+# =========================================================
+
+question = st.text_input(
+    "Ask a historical question:",
+    value="Ai là kiến trúc sư của Dinh Độc Lập?"
+)
+
+# =========================================================
+# RUN REASONING
+# =========================================================
+
+if st.button("Run Reasoning"):
+
+    if "system" not in st.session_state:
+
         st.error(
-            f"Không thể parse question analysis: {e}"
+            "Please initialize system first."
         )
 
-        st.stop()
+    else:
 
-    st.json(parsed)
+        with st.spinner("Reasoning..."):
 
-    # ========================================================
-# NORMALIZE PARSED OUTPUT
-# ========================================================
-
-    entity_label = (
-        parsed.get("entity")
-        or parsed.get("main_entity")
-        or ""
-    )
-
-    target_location = (
-        parsed.get("target_location")
-        or parsed.get("location")
-    )
-
-    reasoning_type = (
-        parsed.get("reasoning_type")
-        or parsed.get("reasoning")
-        or ""
-    ).lower()
-
-    # ========================================================
-    # STEP 2 — GRAPH RETRIEVAL
-    # ========================================================
-
-    st.subheader("2. Graph Retrieval")
-
-    evidence = None
-    raw_results = None
-
-    try:
-
-        # ----------------------------------------------------
-        # MULTI HOP LOCATION
-        # ----------------------------------------------------
-
-        if is_location_reasoning(reasoning_type):
-
-            raw_results = graph.multi_hop_location_reasoning(
-                entity_label=entity_label,
-                target_location=target_location
+            result = (
+                st.session_state.system
+                .answer_question(question)
             )
 
-            evidence = builder.build_multi_hop_context(
-                raw_results
+        # =================================================
+        # ANSWER
+        # =================================================
+
+        st.header("Final Answer")
+
+        st.success(
+
+            result.get(
+                "final_answer",
+                "No answer found."
+            )
+        )
+
+        # =================================================
+        # REASONING ANSWER
+        # =================================================
+
+        if "answer" in result:
+
+            st.header("Reasoning Answer")
+
+            st.json(
+                result["answer"]
             )
 
-        # ----------------------------------------------------
-        # MATERIAL QUERY
-        # ----------------------------------------------------
+        elif result.get(
+            "reasoning_type"
+        ) == "property_retrieval":
 
-        elif reasoning_type == "material":
-
-            entities = graph.search_entity(
-                entity_label
+            st.header(
+                "Property Retrieval"
             )
 
-            if entities:
-
-                entity_id = entities[0]["id"]
-
-                raw_results = graph.get_materials_of_site(
-                    entity_id
-                )
-
-                evidence = builder.build_context(
-                    raw_results
-                )
-
-        # ----------------------------------------------------
-        # LOCATION QUERY
-        # ----------------------------------------------------
-
-        elif reasoning_type == "location":
-
-            entities = graph.search_entity(
-                entity_label
+            st.info(
+                "Answer retrieved directly "
+                "from entity properties."
             )
+        # =================================================
+        # ROOT ENTITY
+        # =================================================
 
-            if entities:
+        st.header("Root Entity")
 
-                entity_id = entities[0]["id"]
+        st.json(
+            result.get(
+                "root_entity",
+                {}
+            )
+        )
 
-                raw_results = graph.get_location_hierarchy(
-                    entity_id
-                )
+        # =================================================
+        # SEMANTIC PARSE
+        # =================================================
 
-                evidence = builder.build_multi_hop_context(
-                    raw_results
-                )
+        st.header("Semantic Parse")
 
-        # ----------------------------------------------------
-        # DEFAULT SEARCH
-        # ----------------------------------------------------
+        st.json(
+            result.get(
+                "semantic_parse",
+                {}
+            )
+        )
+
+        # =================================================
+        # REASONING PLAN
+        # =================================================
+
+        st.header("Reasoning Plan")
+
+        st.json(
+            result.get(
+                "plan",
+                {}
+            )
+        )
+
+        # =================================================
+        # REASONING PATHS
+        # =================================================
+
+        st.header("Reasoning Paths")
+
+        paths = result.get(
+            "reasoning_paths",
+            []
+        )
+
+        if not paths:
+
+            st.warning("No paths found.")
 
         else:
 
-            raw_results = graph.search_entity(
-                entity_label or question
-            )
+            for idx, path in enumerate(paths):
 
-            evidence = builder.build_context(
-                raw_results
-            )
+                with st.expander(
+                    f"Path {idx+1} | Score: {round(path['score'], 3)}"
+                ):
 
-    except Exception as e:
+                    st.write("### Nodes")
 
-        st.error(
-            f"Lỗi Graph Retrieval: {e}"
-        )
+                    st.write(path["nodes"])
 
-        st.stop()
+                    st.write("### Edges")
 
-    # ========================================================
-    # SHOW RAW KG RESULTS
-    # ========================================================
+                    for edge in path["edges"]:
 
-    with st.expander(
-        "Raw KG Results",
-        expanded=False
-    ):
+                        st.json(edge)
 
-        st.json(raw_results)
+# =========================================================
+# SAMPLE QUESTIONS
+# =========================================================
 
-    # ========================================================
-    # STEP 3 — BUILD CONTEXT
-    # ========================================================
+st.sidebar.header("Sample Questions")
 
-    st.subheader("3. Evidence Context")
+samples = [
 
-    context = evidence.get(
-        "context",
-        ""
-    )
+    "Ai là kiến trúc sư của Dinh Độc Lập?",
 
-    provenance = evidence.get(
-        "provenance",
-        []
-    )
+    "Dinh Độc Lập nằm ở đâu?",
 
-    st.text_area(
-        "Context",
-        context,
-        height=250
-    )
+    "Những công trình nào do kiến trúc sư của Dinh Độc Lập thiết kế?",
 
-    # ========================================================
-    # STEP 4 — LLM REASONING
-    # ========================================================
+    "Công trình nào thuộc Quận 1?",
 
-    st.subheader("4. LLM Reasoning")
+    "Ai xây dựng Dinh Độc Lập?"
+]
 
-    prompt = f"""
+for s in samples:
 
-Bạn là hệ thống QA cho Heritage Knowledge Graph.
-
-NHIỆM VỤ:
-
-1. Chỉ sử dụng thông tin trong KNOWLEDGE GRAPH FACTS
-làm factual evidence.
-
-2. Nếu cần suy luận:
-phải ghi rõ [LLM-INFERENCE]
-
-3. Không được bịa fact.
-
-4. Nếu KG không đủ dữ liệu:
-nói rõ:
-"Không tìm thấy trực tiếp trong KG"
-
-5. Nếu tồn tại reasoning chain:
-hãy phân tích chain từng bước.
-
-==================================================
-
-QUESTION:
-
-{question}
-
-==================================================
-
-KNOWLEDGE GRAPH FACTS:
-
-{context}
-
-==================================================
-
-FORMAT OUTPUT:
-
-[KG-FACTS]
-...
-
-[REASONING]
-...
-
-[LLM-INFERENCE]
-...
-
-[FINAL ANSWER]
-...
-
-[PROVENANCE]
-...
-
-"""
-
-    try:
-
-        answer = ask_groq(
-            question=question,
-            evidence=evidence
-        )
-
-    except Exception as e:
-
-        st.error(
-            f"Lỗi gọi Groq: {e}"
-        )
-
-        st.stop()
-
-    # ========================================================
-    # FINAL ANSWER
-    # ========================================================
-
-    st.subheader("5. Final Answer")
-
-    st.write(answer)
-
-    # ========================================================
-    # PROVENANCE
-    # ========================================================
-
-    with st.expander(
-        "Provenance",
-        expanded=False
-    ):
-
-        st.json(provenance)
-
-    # ========================================================
-    # DEBUG PANEL
-    # ========================================================
-
-    with st.expander(
-        "Debug Info",
-        expanded=False
-    ):
-
-        st.write("Reasoning Type:")
-        st.code(reasoning_type)
-
-        st.write("Entity:")
-        st.code(entity_label)
-
-        st.write("Target Location:")
-        st.code(target_location)
+    st.sidebar.write(f"- {s}")

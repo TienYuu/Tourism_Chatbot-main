@@ -1,176 +1,122 @@
-from groq import Groq
-from dotenv import load_dotenv
+# groq_client.py
 
 import json
-import os
-
-load_dotenv()
-
-client = Groq(
-    api_key=os.getenv("GROQ_API_KEY")
-)
-
-MODEL_NAME = "llama-3.3-70b-versatile"
+import time
+from groq import Groq
 
 
-# ============================================================
-# SYSTEM PROMPTS
-# ============================================================
+class GroqClient:
 
-GRAPH_QA_SYSTEM_PROMPT = """
-Bạn là AI chuyên suy luận trên Knowledge Graph di sản văn hóa.
+    def __init__(
+        self,
+        api_key,
+        model="llama-3.3-70b-versatile"
+    ):
 
-Nhiệm vụ:
-- Chỉ trả lời dựa trên GRAPH EVIDENCE được cung cấp.
-- Được phép suy luận multi-hop.
-- Nếu dữ liệu không đủ thì nói rõ không tìm thấy.
-- Không được bịa thông tin ngoài graph.
+        self.client = Groq(
+            api_key=api_key
+        )
 
-Ví dụ suy luận multi-hop:
+        self.model = model
 
-A -> located_in -> B
-B -> located_in -> C
+    # =========================================================
+    # GENERIC CHAT
+    # =========================================================
 
-=> A nằm trong C.
+    def chat(
+        self,
+        system_prompt,
+        user_prompt,
+        temperature=0.1,
+        max_tokens=1024,
+        retries=3
+    ):
 
-Hãy trả lời ngắn gọn, chính xác và tự nhiên.
-"""
+        for attempt in range(retries):
 
+            try:
 
-ENTITY_EXTRACTION_PROMPT = """
-Bạn là bộ phân tích câu hỏi cho hệ thống Knowledge Graph.
+                response = (
+                    self.client.chat.completions.create(
 
-Hãy trích xuất:
-- entities
-- question_type
+                        model=self.model,
 
-Trả về STRICT JSON.
+                        temperature=temperature,
 
-question_type có thể là:
-- location
-- person
-- time
-- material
-- relation
-- description
-- unknown
+                        max_tokens=max_tokens,
 
-Ví dụ:
+                        messages=[
 
-Input:
-"Tháp Eiffel nằm ở quận nào của Paris?"
+                            {
+                                "role": "system",
+                                "content": system_prompt
+                            },
 
-Output:
-{
-  "entities": ["Tháp Eiffel", "Paris"],
-  "question_type": "location"
-}
-"""
+                            {
+                                "role": "user",
+                                "content": user_prompt
+                            }
+                        ]
+                    )
+                )
 
+                content = (
+                    response
+                    .choices[0]
+                    .message.content
+                )
 
-# ============================================================
-# BASE CHAT
-# ============================================================
+                return content
 
-def _chat(messages, temperature=0.2):
+            except Exception as e:
 
-    response = client.chat.completions.create(
-        model=MODEL_NAME,
-        messages=messages,
-        temperature=temperature
-    )
+                print(
+                    f"[Groq ERROR] Attempt {attempt+1}: {e}"
+                )
 
-    return response.choices[0].message.content
+                time.sleep(1)
 
+        return ""
 
-# ============================================================
-# MAIN QA
-# ============================================================
+    # =========================================================
+    # JSON CHAT
+    # =========================================================
 
-def ask_groq(question, evidence):
+    def chat_json(
+        self,
+        system_prompt,
+        user_prompt,
+        temperature=0.1,
+        max_tokens=1024
+    ):
 
-    prompt = f"""
-[USER QUESTION]
-{question}
+        response = self.chat(
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+            temperature=temperature,
+            max_tokens=max_tokens
+        )
 
-[GRAPH EVIDENCE]
-{evidence}
+        try:
 
-Hãy trả lời câu hỏi dựa trên graph evidence phía trên.
-"""
+            return json.loads(response)
 
-    return _chat(
-        [
-            {
-                "role": "system",
-                "content": GRAPH_QA_SYSTEM_PROMPT
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
-        temperature=0.1
-    )
+        except Exception:
 
+            try:
 
-# ============================================================
-# ENTITY EXTRACTION
-# ============================================================
+                cleaned = (
+                    response
+                    .replace("```json", "")
+                    .replace("```", "")
+                    .strip()
+                )
 
-def extract_entities_and_intent(question):
+                return json.loads(cleaned)
 
-    prompt = f"""
-{ENTITY_EXTRACTION_PROMPT}
+            except Exception:
 
-Input:
-{question}
-"""
-
-    response = _chat(
-        [
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
-        temperature=0
-    )
-
-    try:
-        return json.loads(response)
-
-    except Exception:
-
-        return {
-            "entities": [],
-            "question_type": "unknown"
-        }
-    
-def extract_question_entities(question):
-
-    prompt = f"""
-    Extract:
-
-    1. Main entity
-    2. Target location
-    3. Reasoning type
-
-    QUESTION:
-    {question}
-
-    Output JSON only.
-    """
-
-    response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
-        temperature=0
-    )
-
-    return response.choices[0].message.content
+                return {
+                    "error": "Failed to parse JSON",
+                    "raw_response": response
+                }
