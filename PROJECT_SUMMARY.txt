@@ -1,0 +1,620 @@
+================================================================================
+TOURISM CHATBOT - KNOWLEDGE GRAPH REASONING SYSTEM
+Tóm Tắt Toàn Bộ Luồng và Chức Năng Project
+================================================================================
+
+================================================================================
+🎯 GIỚI THIỆU
+================================================================================
+
+Đây là một hệ thống Knowledge Graph Reasoning cho các công trình di sản văn hóa, 
+giúp trả lời các câu hỏi phức tạp qua việc duyệt đồ thị tri thức và suy luận 
+ngữ nghĩa.
+
+Mục đích: Trả lời câu hỏi tự nhiên về di sản văn hóa qua suy luận đồ thị  
+Quy trình: Dữ liệu → 3 stage xử lý → Neo4j graph → QA Engine → Streamlit UI  
+Kỹ thuật: Semantic parsing + Entity linking + Beam search + Embedding-based ranking  
+Output: Câu trả lời có chứng cứ (với đường đi graph được xếp hạng)
+
+================================================================================
+📊 LUỒNG CHÍNH (MAIN PIPELINE)
+================================================================================
+
+Dữ liệu gốc → Stage 1 → Stage 2 → Stage 3 → Graph DB → Streamlit App
+(Wikidata)   (Trích xuất) (Chuẩn hóa) (Làm sạch) (Neo4j)  (QA Interface)
+
+================================================================================
+📥 STAGE 1: Trích Xuất Dữ Liệu Thô (main_stage1.py)
+================================================================================
+
+Chức năng:
+- Lấy dữ liệu di sản từ Wikidata và Wikipedia
+- Tạo text chunks (chia nhỏ văn bản thành các đoạn hợp lý)
+- Lưu dữ liệu thô để xử lý tiếp
+
+Input:
+- File seed: heritage_seed_entities.csv (danh sách công trình di sản ban đầu)
+
+Output:
+- raw_entities.json - Các thực thể chưa xử lý
+- raw_relations.json - Quan hệ chưa xử lý
+- text_chunks.json - Các đoạn văn bản
+- metadata.json - Siêu dữ liệu (tác giả, năm xây dựng, v.v.)
+
+Công cụ:
+- WikidataClient - Lấy dữ liệu từ Wikidata
+- WikipediaCrawler - Thu thập thông tin từ Wikipedia
+- SectionAwareChunker - Chia văn bản theo section
+
+================================================================================
+🔄 STAGE 2: Chuẩn Hóa và Xây Dựng Graph (main_stage2.py)
+================================================================================
+
+Chức năng:
+- Trích xuất thực thể từ các đoạn văn bản
+- Xây dựng các nút (nodes) và cạnh (edges) theo ontology CIDOC-CRM
+- Ánh xạ các quan hệ sang các mã chuẩn
+
+Input:
+- raw_entities.json, raw_relations.json, text_chunks.json
+
+Output:
+- stage2_nodes.json - Các nút đã chuẩn hóa
+- stage2_relations.json - Quan hệ đã ánh xạ
+- triples.csv - Các triple (subject-predicate-object)
+
+Thành phần chính:
+
+File                    | Chức năng
+----------------------- | -----------------------------------------
+entity_extractor.py     | Trích xuất thực thể từ văn bản
+node_builder.py         | Xây dựng nút graph với thuộc tính
+relation_mapper.py      | Ánh xạ quan hệ tự nhiên → CIDOC-CRM
+triple_builder.py       | Tạo bộ ba (triple) RDF
+
+Ontology ánh xạ (CIDOC-CRM):
+
+Quan hệ tự nhiên      → Mã CIDOC
+architect             → P14_carried_out_by
+built_by              → P108_was_produced_by
+located_in            → P53_has_former_or_current_location
+part_of               → P46_is_composed_of
+material_used         → P45_consists_of
+founded_by            → P11_had_participant
+time_span             → P4_has_time_span
+related_to            → P130_shows_features_of
+
+================================================================================
+✨ STAGE 3: Làm Sạch và Làm Phong Phú Dữ Liệu (main_stage3.py)
+================================================================================
+
+Chức năng:
+- Làm sạch các duplicate entity
+- Tạo canonical entity map (bản đồ chuẩn tắc)
+- Thêm provenance links (ghi chú nguồn gốc)
+- Kiểm tra tính nhất quán
+
+Input:
+- stage2_nodes.json, stage2_relations.json
+
+Output:
+- refined_nodes.json - Nút đã làm sạch
+- refined_relations.json - Quan hệ đã làm sạch
+- canonical_entity_map.json - Bản đồ chuẩn hóa
+- provenance_links.json - Liên kết tới nguồn gốc
+
+================================================================================
+🧠 QUESTION ANSWERING PIPELINE (Streamlit App - app.py)
+================================================================================
+
+Luồng xử lý:
+
+User Question
+    ↓
+SemanticParser (Bóc tách ý định ngữ nghĩa)
+    ↓
+EntityLinker (Tìm thực thể chính)
+    ↓
+PropertyReasoner (Kiểm tra thuộc tính trực tiếp)
+    ↓
+Planner (Lên kế hoạch tìm kiếm)
+    ↓
+TraversalEngine (Duyệt đồ thị theo beam search)
+    ↓
+PathRanker (Xếp hạng các đường đi tìm được)
+    ↓
+Final Answer
+
+================================================================================
+🔑 CÁC THÀNH PHẦN CHÍNH CỦA QA PIPELINE
+================================================================================
+
+1️⃣ SemanticParser (reasoning/semantic_parser.py)
+--------------------------------------------------
+
+Chức năng: Chuyển câu hỏi thành cấu trúc structured JSON
+
+Output ví dụ:
+{
+  "target": "Dinh Độc Lập",
+  "question_type": "architect",
+  "relations": ["architect"],
+  "reasoning_depth": 1
+}
+
+Cơ chế: Dùng LLM (Groq) + fallback rule-based
+
+Quy tắc nhận diện quan hệ:
+- Property/attribute: coordinates, address, description, country
+- Concept-related: material_used, architect, built_by, located_in
+
+Quy tắc reasoning_depth:
+- 1 = direct property lookup or single relation
+- 2 = multi-hop reasoning path
+- 3 = complex multi-hop constraints
+
+---
+
+2️⃣ EntityLinker (utils_new/entity_linker.py)
+---------------------------------------------
+
+Chức năng: Liên kết tên thực thể từ câu hỏi tới các nút trong graph
+
+Cách làm: Fuzzy string matching (RapidFuzz) trên cache entities
+
+Output: Entity ID, label, điểm tương tự
+
+Phương pháp:
+- Chuẩn hóa text (lowercase, normalize spaces)
+- So sánh token_set_ratio giữa query và entity cache
+- Lọc theo threshold (mặc định 80)
+
+---
+
+3️⃣ PropertyReasoner (reasoning/property_reasoner.py)
+----------------------------------------------------
+
+Chức năng: Trả lời câu hỏi thuộc tính đơn giản (không cần duyệt graph)
+
+Ví dụ câu hỏi được xử lý:
+- "Tọa độ của Dinh Độc Lập?" → Lấy latitude, longitude
+- "Dinh Độc Lập ở đâu?" → Lấy address
+- "Dinh Độc Lập là gì?" → Lấy description
+- "Dinh Độc Lập ở nước nào?" → Lấy country
+
+Điều kiện: Nếu trả lời được → trả lại luôn, không cần search graph
+
+---
+
+4️⃣ Planner (reasoning/planner.py)
+---------------------------------
+
+Chức năng: Tạo kế hoạch tìm kiếm dựa trên độ phức tạp của câu hỏi
+
+Kế hoạch điều chỉnh:
+reasoning_depth = 1 → max_depth=2, beam_width=5 (đơn giản)
+reasoning_depth = 2 → max_depth=3, beam_width=8 (phức tạp)
+reasoning_depth = 3 → max_depth=4, beam_width=10 (rất phức tạp)
+
+Chiến lược: beam_search (tìm kiếm có hạn chế số lượng đường đi)
+
+---
+
+5️⃣ TraversalEngine (graph/traversal_engine.py)
+----------------------------------------------
+
+Chức năng: Duyệt đồ thị bằng Beam Search
+
+Quá trình:
+1. Bắt đầu từ entity gốc
+2. Mở rộng hàng xóm (neighbors)
+3. Lọc hàng xóm theo semantic (chỉ lấy quan hệ phù hợp)
+4. Phát hiện và loại bỏ vòng lặp
+5. Tạo nhiều đường đi song song (beam)
+6. Lặp lại tới độ sâu max
+
+Semantic Filtering:
+- Nếu người dùng hỏi "ai kiến trúc sư"
+  → Chỉ lấy edges có relation = "architect"
+- Lưu trữ cache visited nodes để tối ưu
+
+---
+
+6️⃣ PathRanker (reasoning/path_ranker.py)
+----------------------------------------
+
+Chức năng: Xếp hạng các đường đi dựa trên điểm số
+
+Công thức xếp hạng:
+final_score = (
+    relation_score × 0.55  +  # Quan hệ có khớp ý định?
+    structure_score × 0.25 +  # Đường đi ngắn gọn?
+    target_score × 0.20       # Loại entity đích khớp?
+)
+
+Thành phần:
+- Relation Score: So sánh quan hệ trong graph vs ý định người dùng 
+  (embedding similarity + hard mapping)
+- Structure Score: Ưu tiên các đường đi ngắn hơn (1 - (length-1)*0.15)
+- Target Score: Kiểm tra loại entity cuối cùng (semantic type matching)
+
+Cơ chế:
+- Sử dụng Sentence Transformers (all-MiniLM-L6-v2) để embedding
+- Hard mapping: Nếu người dùng hỏi "vật liệu" → match với "material_used"
+- Soft mapping: Embedding similarity cho các trường hợp mơ hồ
+
+Relation Aliases (đồng bộ hoàn toàn):
+architect: architect, designed by, kiến trúc sư, thiết kế, ...
+built_by: built by, constructed by, xây dựng, ...
+founded_by: founded by, sáng lập, người sáng lập, ...
+located_in: located in, nằm ở, ở, ở đâu, vị trí tại
+part_of: part of, thuộc, thuộc về, là một phần của, nằm trong
+material_used: consists of, làm bằng, chất liệu, vật liệu, ...
+time_span: time span, thời gian, vào năm nào, khi nào, niên đại, thời kỳ
+related_to: related to, liên quan đến, đặc điểm của, thể hiện
+
+---
+
+7️⃣ RelationCanonicalizer (ontology/relation_canonicalizer.py)
+-------------------------------------------------------------
+
+Chức năng: Chuẩn hóa tên quan hệ từ nhiều biến thể
+
+Ví dụ:
+"kiến trúc sư", "designed by", "thiết kế" 
+  → TẤT CẢ = "architect"
+  
+"nằm ở", "ở đâu", "vị trí" 
+  → TẤT CẢ = "located_in"
+
+Phương pháp: Keyword matching + lowercase normalization
+
+---
+
+8️⃣ OntologyMapper (stage2/ontology_mapper.py)
+---------------------------------------------
+
+Chức năng: Ánh xạ NER labels → CIDOC-CRM classes
+
+Bảng ánh xạ:
+NER Label              | CIDOC-CRM Class
+-----------------------|--------------------
+PER                    | E21_Person
+GPE/LOC                | E53_Place
+FAC/HISTORICAL_RELICT  | E27_Site
+EVENT                  | E5_Event
+DYNASTY                | E4_Period
+TIME                   | E52_Time_Span
+ORG                    | E74_Group
+ARTIFACT               | E22_Human-Made_Object
+MATERIAL               | E57_Material
+UNKNOWN                | E1_CRM_Entity
+
+Semantic Keywords:
+- MATERIALS: metal, alloy, steel, wood, stone, brick, ceramic, bronze
+- BUILDINGS: tower, temple, pagoda, museum, monument, castle, fortress, bridge
+- HERITAGE: heritage, historical site, archaeological site
+- GEO: district, city, province, country, village, commune, ward
+- NATURAL: mountain, river, lake, forest, island, beach, cave
+- PERSON: human, person, architect, artist, king, emperor
+- ORG: organization, company, agency, committee, association, university
+- EVENTS: festival, battle, war, ceremony
+- TIME: dynasty, historical period
+
+---
+
+📊 GraphQuery (graph/graph_query.py)
+-----------------------------------
+
+Chức năng: Giao diện tới Neo4j database
+
+Các thao tác chính:
+- get_entity_by_id() - Lấy nút theo ID
+- expand_neighbors() - Mở rộng các hàng xóm (1 chiều)
+- expand_bidirectional() - Mở rộng 2 chiều
+- multi_hop_paths() - Tìm tất cả path từ start tới end
+- run_query() - Chạy Cypher query tùy chỉnh
+
+================================================================================
+🎨 STREAMLIT INTERFACE (app.py)
+================================================================================
+
+Giao diện hiển thị:
+
+1. Nút "Initialize System" - Khởi tạo tất cả thành phần
+   - Khởi tạo GraphQuery (kết nối Neo4j)
+   - Khởi tạo GroqClient (LLM)
+   - Khởi tạo EntityLinker
+   - Khởi tạo SemanticParser
+   - Khởi tạo PathRanker
+   - Khởi tạo TraversalEngine
+   - Khởi tạo Planner
+   - Khởi tạo ReasoningEngine
+
+2. Input box - Nhập câu hỏi
+   Câu hỏi mặc định: "Ai là kiến trúc sư của Dinh Độc Lập?"
+
+3. Nút "Run Reasoning" - Chạy pipeline
+
+4. Kết quả hiển thị:
+   - Final Answer (câu trả lời cuối cùng)
+   - Reasoning Answer (chi tiết logic)
+   - Root Entity (thực thể chính)
+   - Semantic Parse (cấu trúc ngữ nghĩa)
+   - Reasoning Plan (kế hoạch tìm kiếm)
+   - Reasoning Paths (các đường đi + điểm số)
+   - Sample Questions (câu hỏi mẫu)
+
+Sample Questions:
+- "Ai là kiến trúc sư của Dinh Độc Lập?"
+- "Dinh Độc Lập nằm ở đâu?"
+- "Những công trình nào do kiến trúc sư của Dinh Độc Lập thiết kế?"
+- "Công trình nào thuộc Quận 1?"
+- "Ai xây dựng Dinh Độc Lập?"
+
+================================================================================
+🔀 LUỒNG XỬ LÝ MỘT CÂU HỎI (CHI TIẾT)
+================================================================================
+
+Ví dụ: "Ai là kiến trúc sư của Dinh Độc Lập?"
+
+1. SEMANTIC PARSING
+   Input: "Ai là kiến trúc sư của Dinh Độc Lập?"
+   Output: {
+     "target": "Dinh Độc Lập",
+     "question_type": "architect",
+     "relations": ["architect"],
+     "reasoning_depth": 1
+   }
+
+2. ENTITY LINKING
+   Input: "Dinh Độc Lập"
+   Output: {
+     "id": "independence_palace_001",
+     "label": "Dinh Độc Lập",
+     "score": 95
+   }
+
+3. PROPERTY REASONING (kiểm tra)
+   → Không có thuộc tính "architect" trực tiếp
+   → Chuyển sang graph search
+
+4. PLANNING
+   reasoning_depth=1 → max_depth=2, beam_width=5
+
+5. TRAVERSAL (Beam Search)
+   Start: independence_palace_001
+   Depth 1:
+     - independence_palace_001 -[architect]-> Nguyễn Viết Thụ
+     - independence_palace_001 -[part_of]-> District 1
+   
+   Semantic Filter: Chỉ lấy edges architect
+     - independence_palace_001 -[architect]-> Nguyễn Viết Thụ
+   
+   Depth 2:
+     - Nguyễn Viết Thụ -[...]*-> ...
+
+6. RANKING
+   Path 1: independence_palace_001 -[architect]-> Nguyễn Viết Thụ
+   score = 0.95 (khớp tuyệt đối)
+
+7. ANSWER EXTRACTION
+   Final Answer: "Nguyễn Viết Thụ"
+
+================================================================================
+📁 CẤU TRÚC THƯ MỤC DỮ LIỆU
+================================================================================
+
+project/
+├── data/
+│   ├── raw/                          ← Stage 1 output
+│   │   ├── raw_entities.json
+│   │   ├── raw_relations.json
+│   │   └── metadata.json
+│   ├── processed/                    ← Stage 2 output
+│   │   ├── stage2_nodes.json
+│   │   ├── stage2_relations.json
+│   │   ├── text_chunks.json
+│   │   └── triples.csv
+│   └── refined/                      ← Stage 3 output
+│       ├── refined_nodes.json
+│       ├── refined_relations.json
+│       ├── canonical_entity_map.json
+│       └── provenance_links.json
+└── src/
+    ├── app.py                        ← Streamlit UI
+    ├── config.py                     ← Configuration
+    ├── graph_query.py                ← Neo4j interface
+    ├── groq_client.py                ← LLM client
+    ├── neo4j_loader.py               ← Import to Neo4j
+    ├── main_stage1.py                ← Stage 1 orchestrator
+    ├── main_stage2.py                ← Stage 2 orchestrator
+    ├── main_stage3.py                ← Stage 3 orchestrator
+    ├── reasoning/                    ← QA Pipeline
+    │   ├── semantic_parser.py
+    │   ├── planner.py
+    │   ├── path_ranker.py
+    │   ├── property_reasoner.py
+    │   ├── reasoning_engine.py       ← Orchestrator
+    │   ├── planner.py
+    │   └── semantic_parser.py
+    ├── graph/
+    │   ├── graph_query.py
+    │   └── traversal_engine.py       ← Beam search
+    ├── ontology/
+    │   └── relation_canonicalizer.py
+    ├── stage2/
+    │   ├── entity_extractor.py
+    │   ├── node_builder.py
+    │   ├── relation_mapper.py
+    │   ├── triple_builder.py
+    │   ├── alignment_utils.py
+    │   └── ontology_mapper.py
+    └── utils_new/
+        ├── entity_linker.py
+        └── text_normalizer.py
+
+================================================================================
+⚙️ CÁC QUYẾT ĐỊNH THIẾT KẾ CHÍNH
+================================================================================
+
+Aspect                 | Giải Pháp
+-----------------------|--------------------------------------------
+Ontology              | CIDOC-CRM (Conceptual Reference Model)
+Search Algorithm      | Beam Search + Semantic Filtering
+Ranking               | Weighted score (relation × 0.55 + 
+                      | structure × 0.25 + target × 0.20)
+Embedding             | Sentence-transformers (all-MiniLM-L6-v2)
+LLM                   | Groq API (llama-3 hoặc tương tự)
+Graph Database        | Neo4j
+UI Framework          | Streamlit
+Fuzzy Matching        | RapidFuzz (token_set_ratio)
+Entity Cache          | In-memory dict (tối ưu performance)
+Caching               | Global visited set (prevent cycles)
+Beam Width Default    | 5 (có thể tăng cho multi-hop)
+Max Depth Default     | 3 (có thể tăng cho complex reasoning)
+
+================================================================================
+🔑 CÁC TỆPTIN CHÍNH VÀ CHỨC NĂNG
+================================================================================
+
+STAGE 1 FILES:
+- main_stage1.py                 → Orchestrator stage 1
+- wikidata_client.py             → Lấy dữ liệu từ Wikidata
+- wikipedia_crawler.py           → Crawl Wikipedia
+- chunking.py                    → Chia văn bản thành chunks
+
+STAGE 2 FILES:
+- main_stage2.py                 → Orchestrator stage 2
+- stage2/entity_extractor.py     → Trích xuất thực thể NER
+- stage2/node_builder.py         → Xây dựng node attributes
+- stage2/relation_mapper.py      → Map relations
+- stage2/triple_builder.py       → Tạo RDF triples
+- stage2/ontology_mapper.py      → Map NER → CIDOC
+
+STAGE 3 FILES:
+- main_stage3.py                 → Orchestrator stage 3
+- Entity alignment & deduplication
+- Canonical entity mapping
+- Provenance tracking
+
+QA PIPELINE FILES:
+- app.py                         → Streamlit UI
+- reasoning_engine.py            → QA orchestrator
+- semantic_parser.py             → Bóc tách ý định
+- entity_linker.py               → Link entities
+- planner.py                     → Tạo kế hoạch tìm kiếm
+- traversal_engine.py            → Beam search
+- path_ranker.py                 → Xếp hạng đường đi
+- property_reasoner.py           → Answer property questions
+- relation_canonicalizer.py      → Normalize relations
+- graph_query.py                 → Neo4j interface
+- groq_client.py                 → LLM client interface
+
+UTILITIES:
+- config.py                      → Configuration constants
+- neo4j_loader.py                → Load data to Neo4j
+- entity_linker.py               → Entity linking
+- text_normalizer.py             → Text preprocessing
+
+================================================================================
+💡 CHIẾN LƯỢC TRẢ LỜI CÂU HỎI
+================================================================================
+
+1. PROPERTY QUESTION (trực tiếp)
+   Ví dụ: "Tọa độ của Dinh Độc Lập?"
+   → PropertyReasoner trả lời ngay từ attributes
+   → Không cần duyệt graph
+
+2. SINGLE-HOP QUESTION (1 quan hệ)
+   Ví dụ: "Ai kiến trúc sư của Dinh Độc Lập?"
+   → EntityLinker: Tìm "Dinh Độc Lập"
+   → TraversalEngine: Expand 1 level với filter architect
+   → PathRanker: Xếp hạng kết quả
+   → Trả lời: Nguyễn Viết Thụ
+
+3. MULTI-HOP QUESTION (2+ quan hệ)
+   Ví dụ: "Những công trình nào do kiến trúc sư của Dinh Độc Lập thiết kế?"
+   → EntityLinker: Tìm "Dinh Độc Lập"
+   → TraversalEngine: Expand 2 levels:
+      Dinh → architect → Nguyễn Viết Thụ
+      Nguyễn Viết Thụ → architect → Công trình khác
+   → PathRanker: Xếp hạng tất cả kết quả
+   → Trả lời: Danh sách các công trình
+
+================================================================================
+🎯 ĐIỂM NỚI BẬT CỦA HỆ THỐNG
+================================================================================
+
+1. SEMANTIC-AWARE SEARCH
+   - Hiểu ý định người dùng qua semantic parsing
+   - Lọc đồ thị theo quan hệ có nghĩa, không phải tuỳ tiện
+
+2. MULTI-LANGUAGE SUPPORT
+   - Xử lý cả tiếng Anh và tiếng Việt
+   - Chuẩn hóa dạng khác nhau của cùng một quan hệ
+
+3. EVIDENCE-BASED REASONING
+   - Trả lời không chỉ kết quả mà còn đường đi
+   - Người dùng thấy logic tìm kiếm
+
+4. ADAPTIVE SEARCH DEPTH
+   - reasoning_depth = 1 → tìm kiếm nông
+   - reasoning_depth = 3 → tìm kiếm sâu & phức tạp
+
+5. BEAM SEARCH OPTIMIZATION
+   - Không phải tìm tất cả path (tốn thời gian)
+   - Chỉ giữ top-K candidates tốt nhất (tối ưu)
+
+6. ONTOLOGY-DRIVEN
+   - CIDOC-CRM standard → khả năng interoperability
+   - Clear semantic definition cho mỗi quan hệ
+
+================================================================================
+🚀 QUY TRÌNH KHỞI ĐỘNG
+================================================================================
+
+1. CHẠY STAGE 1
+   python main_stage1.py
+   → Tạo raw_entities.json, raw_relations.json, ...
+
+2. CHẠY STAGE 2
+   python main_stage2.py
+   → Tạo stage2_nodes.json, stage2_relations.json, ...
+
+3. CHẠY STAGE 3
+   python main_stage3.py
+   → Tạo refined_nodes.json, refined_relations.json, ...
+
+4. LOAD VÀO NEO4J
+   python neo4j_loader.py
+   → Import refined data vào Neo4j
+
+5. CHẠY STREAMLIT APP
+   streamlit run app.py
+   → Khởi động UI tại localhost:8501
+
+================================================================================
+📊 KÍCH THƯỚC VÀ PERFORMANCE
+================================================================================
+
+Dữ liệu:
+- Raw entities: ~1000s nodes
+- Raw relations: ~10,000s edges
+- After refinement: ~80% (duplicate removal)
+- Neo4j indexes: id, label (performance optimization)
+
+Performance:
+- Entity linking: ~100ms (fuzzy matching + cache)
+- Beam search (depth=2): ~500-1000ms
+- Path ranking: ~100-200ms per path
+- Total response time: ~2-3 seconds per question
+
+Optimization:
+- Entity cache (in-memory)
+- Global visited set (prevent redundant expansion)
+- Beam width limiting (stop exploring weak paths)
+
+================================================================================
+END OF SUMMARY
+================================================================================
