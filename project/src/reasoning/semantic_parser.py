@@ -1,5 +1,4 @@
 # reasoning/semantic_parser.py
-
 import json
 
 # ============================================================
@@ -40,7 +39,6 @@ Rules for 'reasoning_depth':
 - 3 = complex multi-hop constraints
 """
 
-
 class SemanticParser:
 
     def __init__(self, groq_client):
@@ -72,15 +70,35 @@ class SemanticParser:
         if any(k in q for k in country_keywords):
             return "country"
 
-        # 5. Vật liệu (Material - Phục vụ PathRanker)
+        # 5. Vị trí / nằm ở đâu (Located In)
+        location_keywords = ["ở đâu", "nằm ở đâu", "vị trí", "địa điểm", "thuộc", "nằm ở"]
+        if any(k in q for k in location_keywords):
+            return "located_in"
+
+        # 6. Vật liệu (Material - Phục vụ PathRanker)
         material_keywords = ["vật liệu", "chất liệu", "làm bằng", "được làm bằng", "thành phần"]
         if any(k in q for k in material_keywords):
             return "material_used"
 
-        # 6. Kiến trúc sư (Architect)
+        # 7. Kiến trúc sư (Architect)
         architect_keywords = ["kiến trúc sư", "architect", "thiết kế"]
         if any(k in q for k in architect_keywords):
             return "architect"
+
+        return None
+
+    def rule_based_multi_hop_detection(self, question):
+        q = str(question or "").lower()
+
+        # Detect requests like: "Những công trình nào do kiến trúc sư của Tháp Eiffel thiết kế?"
+        if ("công trình" in q or "công trình nào" in q or "những công trình" in q) and (
+            "kiến trúc sư của" in q or ("kiến trúc sư" in q and "thiết kế" in q)
+        ):
+            return {
+                "relations": ["architect", "built_by"],
+                "question_type": "architect_works",
+                "reasoning_depth": 2
+            }
 
         return None
 
@@ -88,12 +106,7 @@ class SemanticParser:
     # MAIN PARSE METHOD
     # =====================================================
     def parse(self, question: str):
-        user_prompt = f"""
-Question:
-{question}
-
-Return JSON only.
-"""
+        user_prompt = f"Question:\n{question}\n\nReturn JSON only."
 
         response = self.groq_client.chat(
             system_prompt=SYSTEM_PROMPT,
@@ -112,6 +125,17 @@ Return JSON only.
             }
 
         # =====================================================
+        # RULE-BASED MULTI-HOP DETECTION
+        # =====================================================
+        multi_hop = self.rule_based_multi_hop_detection(question)
+
+        if multi_hop:
+            parsed["relations"] = multi_hop["relations"]
+            parsed["question_type"] = multi_hop["question_type"]
+            parsed["reasoning_depth"] = multi_hop["reasoning_depth"]
+            return parsed
+
+        # =====================================================
         # RULE-BASED FALLBACK (BỌC LÓT KHI LLM SAI HOẶC RA SỔ LẠC)
         # =====================================================
         fallback_relation = self.rule_based_relation_detection(question)
@@ -125,7 +149,7 @@ Return JSON only.
             if not parsed.get("question_type") or parsed.get("question_type") == "unknown":
                 parsed["question_type"] = fallback_relation
 
-            # Tự động hạ reasoning_depth xuống 1 cho các thuộc tính tĩnh trực tiếp (address, description, coordinates, country)
+            # Tự động hạ reasoning_depth xuống 1 cho các thuộc tính tĩnh trực tiếp
             if fallback_relation in ["coordinates", "address", "description", "country"]:
                 parsed["reasoning_depth"] = 1
 

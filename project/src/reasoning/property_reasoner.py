@@ -90,4 +90,26 @@ class PropertyReasoner:
                     "property": "country"
                 }
 
+        # =================================================
+        # LOCATION / CITY / NẰM Ở ĐÂU
+        # =================================================
+        location_keywords = [
+            "located_in", "ở đâu", "nằm ở đâu", "vị trí", "thành phố", "city", "location"
+        ]
+
+        if any(keyword in relation for keyword in location_keywords):
+            location = (
+                node.get("location") or
+                node.get("city") or
+                node.get("province") or
+                node.get("country") or
+                node.get("address")
+            )
+
+            if location:
+                return {
+                    "answer": str(location).strip(),
+                    "property": "location"
+                }
+
         return None
